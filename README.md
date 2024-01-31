@@ -17,24 +17,26 @@ Use of scope syntax is not permitted on this project
 Use of scaffolding syntax is not permitted on this project
 
 ## Gems used:
-  gem "pry"
-  gem "rspec-rails"
-  gem "simplecov"
-  gem "capybara"
-  gem "launchy"
-  gem "orderly"  gem "debug", platforms: %i[ mri mingw x64_mingw ]
-
-  gem "shoulda-matchers", "~> 5.0"
+```
+gem "pry"
+gem "rspec-rails"
+gem "simplecov"
+gem "capybara"
+gem "launchy"
+gem "orderly"  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+gem "shoulda-matchers", "~> 5.0"
+```
 
 ## Iteration 1
+
 ### CRUD
 <dl>
-  <dt>User Story 1, Parent Index</dt>
+  <dt> User Story 1, Parent Index</dt>
   <dt>[] done
   <dd> For each parent table </dd>
-  <dd>As a visitor
-  <dd><dd>When I visit '/parents'
-  <dd>  <dd>Then I see the name of each parent record in the system</dd>
+  <dd> As a visitor
+  <dd> When I visit '/parents'
+  <dd> Then I see the name of each parent record in the system</dd>
 </dl>
 
 <dl>
