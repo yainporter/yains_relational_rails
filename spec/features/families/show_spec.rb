@@ -13,7 +13,7 @@ RSpec.describe "Family Show Page", type: :feature do
     @taylor = Family.create!(name: "Taylor")
     @schnepf = Family.create!(name: "Schnepf")
     @edmunds = Family.create!(name: "Edmunds")
-    
+
     @marlane = Descendent.create(first_name: "Marlane", family_id: @porters.id, female: true, languages_spoken: 1)
     @don = Descendent.create(first_name: "Don", family_id: @porters.id, female: false, languages_spoken: 2)
 
@@ -49,6 +49,15 @@ RSpec.describe "Family Show Page", type: :feature do
     it "shows the Family's page including all of its attributes" do
       expect(page).to have_content("Family ID: #{@porters.id}")
       expect(page).to have_content("#{@porters.id}")
+    end
+  end
+
+  describe "User Story 7 - Parent Child Count" do
+    it "displays the number of children associated with the parent" do
+      expect(page).to have_content("Number of Porter descendents: 10")
+
+      visit families_show_path(@lines.id)
+      expect(page).to have_content("Number of Lines descendents: 2")
     end
   end
 end
