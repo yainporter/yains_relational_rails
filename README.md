@@ -66,7 +66,7 @@ gem "shoulda-matchers", "~> 5.0"
 </dl>
 <dl>
   <dt>User Story 5, Parent Children Index</dt>
-  <dt>[] done
+  <dt>[x] done
   <dd>As a visitor
   <dd>When I visit '/parents/:parent_id/child_table_name'
   <dd>Then I see each Child that is associated with that Parent with each Child's attributes

@@ -43,6 +43,11 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
       expect(page).to have_content("Female: false")
       expect(page).to have_content("Languages Spoken: 1")
 
+      expect(page).to have_content("First Name: Justin")
+      expect(page).to have_content("Last Name: Porter")
+      expect(page).to have_content("Family ID: #{@porters.id}")
+      expect(page).to have_content("Female: false")
+      expect(page).to have_content("Languages Spoken: 1")
     end
   end
 end

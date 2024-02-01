@@ -30,4 +30,6 @@ RSpec.describe 'Families Index Page', type: :feature do
       expect(page).to have_content("Schnepf")
     end
   end
+
+  describe
 end
