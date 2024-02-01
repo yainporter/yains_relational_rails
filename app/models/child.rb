@@ -1,5 +1,5 @@
-class Person < ApplicationRecord
-  self.table_name = 'persons'
+class Child < ApplicationRecord
+  self.table_name = 'children'
   belongs_to :surname
 
   def last_name

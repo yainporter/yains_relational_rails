@@ -1,3 +1,3 @@
 class Surname < ApplicationRecord
-  has_many :persons
+  has_many :children
 end

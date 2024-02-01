@@ -14,6 +14,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_021253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "children", force: :cascade do |t|
+    t.string "first_name"
+    t.bigint "surname_id", null: false
+    t.boolean "female"
+    t.integer "languages_spoken", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "parents_id"
+    t.index ["parents_id"], name: "index_children_on_parents_id"
+    t.index ["surname_id"], name: "index_children_on_surname_id"
+  end
+
   create_table "parents", force: :cascade do |t|
     t.integer "mother_id"
     t.integer "father_id"
@@ -22,26 +34,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_021253) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "persons", force: :cascade do |t|
-    t.string "first_name"
-    t.bigint "surname_id", null: false
-    t.boolean "female"
-    t.integer "languages_spoken", default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "parents_id"
-    t.index ["parents_id"], name: "index_persons_on_parents_id"
-    t.index ["surname_id"], name: "index_persons_on_surname_id"
-  end
-
   create_table "surnames", force: :cascade do |t|
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "parents", "persons", column: "father_id"
-  add_foreign_key "parents", "persons", column: "mother_id"
-  add_foreign_key "persons", "parents", column: "parents_id"
-  add_foreign_key "persons", "surnames"
+  add_foreign_key "children", "parents", column: "parents_id"
+  add_foreign_key "children", "surnames"
+  add_foreign_key "parents", "children", column: "father_id"
+  add_foreign_key "parents", "children", column: "mother_id"
 end

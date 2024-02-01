@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get "/parents", to: "parents#index", as: :parents
   get "/parents/:id", to: "parents#show", as: :parents_show
 
-  get "/persons", to: "persons#index", as: :persons
-  get "/persons/:id", to: "persons#show", as: :persons_show
+  get "/children", to: "children#index", as: :children
+  get "/children/:id", to: "children#show", as: :children_show
 end
