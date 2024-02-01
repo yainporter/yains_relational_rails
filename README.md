@@ -50,7 +50,7 @@ gem "shoulda-matchers", "~> 5.0"
 </dl>
 <dl>
   <dt>User Story 3, Child Index</dt>
-  <dt>[] done
+  <dt>[x] done
   <dd>As a visitor
 <dd>When I visit '/child_table_name'
   <dd>Then I see each Child in the system including the Child's attributes
