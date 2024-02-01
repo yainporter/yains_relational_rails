@@ -25,7 +25,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_021253) do
   create_table "persons", force: :cascade do |t|
     t.string "first_name"
     t.bigint "surname_id", null: false
-    t.integer "maiden_name_id"
     t.boolean "female"
     t.integer "languages_spoken", default: 1
     t.datetime "created_at", null: false
@@ -43,7 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_021253) do
 
   add_foreign_key "parents", "persons", column: "father_id"
   add_foreign_key "parents", "persons", column: "mother_id"
-  add_foreign_key "persons", "persons", column: "parents_id"
+  add_foreign_key "persons", "parents", column: "parents_id"
   add_foreign_key "persons", "surnames"
-  add_foreign_key "persons", "surnames", column: "maiden_name_id"
 end

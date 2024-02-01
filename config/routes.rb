@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get "/parents", to: "parents#index", as: :parents
+  get "parents/:id", to: "parents#show", as: :parent_show
 end

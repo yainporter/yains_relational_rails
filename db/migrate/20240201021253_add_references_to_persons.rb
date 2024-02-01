@@ -1,6 +1,5 @@
 class AddReferencesToPersons < ActiveRecord::Migration[7.1]
   def change
-    add_reference :persons, :persons, null: true, foreign_key: true
-    rename_column :persons, :persons_id, :parents_id
+    add_reference :persons, :parents, null: true, foreign_key: true
   end
 end
