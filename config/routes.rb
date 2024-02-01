@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/families", to: "families#index", as: :families
   get "/families/:id", to: "families#show", as: :families_show
-  get "/families/:id/descendents", to: "parent_descendents#index", as: :parent_descendents
+  get "/families/:id/descendents", to: "family_descendents#index", as: :family_descendents
 
   get "/descendents", to: "descendents#index", as: :descendents
   get "/descendents/:id", to: "descendents#show", as: :descendents_show
