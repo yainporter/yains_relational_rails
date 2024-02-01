@@ -13,11 +13,11 @@ RSpec.describe "Family Show Page", type: :feature do
     @taylor = Family.create!(name: "Taylor")
     @schnepf = Family.create!(name: "Schnepf")
     @edmunds = Family.create!(name: "Edmunds")
-
+    
     @marlane = Descendent.create(first_name: "Marlane", family_id: @porters.id, female: true, languages_spoken: 1)
     @don = Descendent.create(first_name: "Don", family_id: @porters.id, female: false, languages_spoken: 2)
 
-    @marlane_and_don = Relationship.create(porter_relationship_id: @marlane.id, porter_descendent_id: @don.id, relationship_type: "married", children: true)
+    @marlane_and_don = Relationship.create(mom_id: @marlane.id, dad_id: @don.id)
 
     @aaron = Descendent.create(first_name: "Aaron", family_id: @porters.id, female: false, languages_spoken: 1)
     @stacee = Descendent.create(first_name: "Stacee", family_id: @porters.id, female: true, languages_spoken: 1)
@@ -34,13 +34,13 @@ RSpec.describe "Family Show Page", type: :feature do
     @rusty = Descendent.create(first_name: "Rusty", family_id: @porters.id, female: false, languages_spoken: 3)
     @yain = Descendent.create(first_name: "Yain", family_id: @porters.id, female: true, languages_spoken: 3)
 
-    @stacee_and_aaron = Relationship.create(porter_relationship_id: @stacee.id, porter_descendent_id: @aaron.id, relationship_type: "married", children: true)
-    @amy_and_rich = Relationship.create(porter_relationship_id: @amy.id, porter_descendent_id: @rich.id, relationship_type: "divorced", children: true)
-    @alissa_and_joe = Relationship.create(porter_relationship_id: @alissa.id, porter_descendent_id: @joe.id, relationship_type: "married", children: true)
-    @dana_and_travis = Relationship.create(porter_relationship_id: @dana.id, porter_descendent_id: @travis.id, relationship_type: "married", children: true)
-    @brittney_and_justin = Relationship.create(porter_relationship_id: @brittney.id, porter_descendent_id: @justin.id, relationship_type: "married", children: true)
-    @amanda_and_lee = Relationship.create(porter_relationship_id: @amanda.id, porter_descendent_id: @lee.id, relationship_type: "married", children: true)
-    @yain_and_rusty = Relationship.create(porter_relationship_id: @yain.id, porter_descendent_id: @rusty.id, relationship_type: "married", children: true)
+    @stacee_and_aaron = Relationship.create(mom_id: @stacee.id, dad_id: @aaron.id)
+    @amy_and_rich = Relationship.create(mom_id: @amy.id, dad_id: @rich.id, married: false)
+    @alissa_and_joe = Relationship.create(mom_id: @alissa.id, dad_id: @joe.id)
+    @dana_and_travis = Relationship.create(mom_id: @dana.id, dad_id: @travis.id)
+    @brittney_and_justin = Relationship.create(mom_id: @brittney.id, dad_id: @justin.id)
+    @amanda_and_lee = Relationship.create(mom_id: @amanda.id, dad_id: @lee.id)
+    @yain_and_rusty = Relationship.create(mom_id: @yain.id, dad_id: @rusty.id)
 
     visit families_show_path(@porters.id)
   end

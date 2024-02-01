@@ -76,7 +76,7 @@ gem "shoulda-matchers", "~> 5.0"
 ### ActiveRecord
 <dl>
   <dt>User Story 6, Parent Index sorted by Most Recently Created </dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the parent index,
   <dd>I see that records are ordered by most recently created first

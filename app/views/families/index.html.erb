@@ -1,6 +1,6 @@
 <h1>List of Families:</h1>
 <ul>
   <% @families.each do |family| %>
-  <li><%= family.name %></li>
+  <li id="family-<%= family.id %>"> <%= family.name %> - Created at: <%= family.created_at %></li>
   <% end %>
 </ul>

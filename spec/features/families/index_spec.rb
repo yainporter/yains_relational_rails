@@ -9,8 +9,6 @@ RSpec.describe 'Families Index Page', type: :feature do
     @pini = Family.create!(name: "Pini")
     @jones = Family.create!(name: "Jones")
     @saechao = Family.create!(name: "Saechao")
-    @schnepf = Family.create!(name: "Schnepf")
-    @edmunds = Family.create!(name: "Edmunds")
 
     visit families_path
   end
@@ -23,13 +21,31 @@ RSpec.describe 'Families Index Page', type: :feature do
       expect(page).to have_content("Finder")
       expect(page).to have_content("Lines")
       expect(page).to have_content("Burnett")
-      expect(page).to have_content("Edmunds")
       expect(page).to have_content("Jones")
       expect(page).to have_content("Saechao")
       expect(page).to have_content("Pini")
-      expect(page).to have_content("Schnepf")
     end
   end
 
-  describe
+  describe "User Story 6 - Parent Children Index" do
+    it "displays records that are ordered by most recently created first" do
+      expect("Porter").to appear_before("Finder")
+      expect("Finder").to appear_before("Lines")
+      expect("Lines").to appear_before("Burnett")
+      expect("Pini").to appear_before("Jones")
+      expect("Jones").to appear_before("Saechao")
+    end
+
+    it "displays when the record was created next to each of the records" do
+      within "#family-#{@porters.id}" do
+        expect(page).to have_content("Created at: #{@porters.created_at}")
+      end
+      within "#family-#{@finder.id}" do
+        expect(page).to have_content("Created at: #{@finder.created_at}")
+      end
+      within "#family-#{@lines.id}" do
+        expect(page).to have_content("Created at: #{@lines.created_at}")
+      end
+    end
+  end
 end

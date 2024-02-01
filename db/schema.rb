@@ -17,11 +17,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_213021) do
   create_table "descendents", force: :cascade do |t|
     t.string "first_name"
     t.bigint "family_id", null: false
+    t.bigint "parents_id"
     t.boolean "female"
     t.integer "languages_spoken", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_descendents_on_family_id"
+    t.index ["parents_id"], name: "index_descendents_on_parents_id"
   end
 
   create_table "families", force: :cascade do |t|
@@ -31,15 +33,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_213021) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.string "relationship_type"
-    t.integer "porter_descendent_id"
-    t.integer "porter_relationship_id"
-    t.boolean "children"
+    t.integer "mom_id"
+    t.integer "dad_id"
+    t.boolean "married", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "descendents", "descendents", column: "parents_id"
   add_foreign_key "descendents", "families"
-  add_foreign_key "relationships", "descendents", column: "porter_descendent_id"
-  add_foreign_key "relationships", "descendents", column: "porter_relationship_id"
+  add_foreign_key "relationships", "descendents", column: "dad_id"
+  add_foreign_key "relationships", "descendents", column: "mom_id"
 end

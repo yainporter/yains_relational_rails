@@ -15,7 +15,7 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
     @marlane = Descendent.create(first_name: "Marlane", family_id: @porters.id, female: true, languages_spoken: 1)
     @don = Descendent.create(first_name: "Don", family_id: @porters.id, female: false, languages_spoken: 2)
 
-    @marlane_and_don = Relationship.create(porter_relationship_id: @marlane.id, porter_descendent_id: @don.id, relationship_type: "married", children: true)
+    @marlane_and_don = Relationship.create(mom_id: @marlane.id, dad_id: @don.id)
 
     @aaron = Descendent.create(first_name: "Aaron", family_id: @porters.id, female: false, languages_spoken: 1)
     @stacee = Descendent.create(first_name: "Stacee", family_id: @porters.id, female: true, languages_spoken: 1)
