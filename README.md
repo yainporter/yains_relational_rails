@@ -58,7 +58,7 @@ gem "shoulda-matchers", "~> 5.0"
 </dl>
 <dl>
   <dt>User Story 4, Child Show </dt>
-  <dt>[] done
+  <dt>[x] done
   <dd>As a visitor
 <dd>When I visit '/child_table_name/:id'
   <dd>Then I see the child with that id including the child's attributes

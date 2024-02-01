@@ -37,13 +37,13 @@ RSpec.describe "Parent Show Page", type: :feature do
     @amanda_and_lee = Parent.create(mother_id: @amanda.id, father_id: @lee.id, married: true)
     @yain_and_rusty = Parent.create(mother_id: @yain.id, father_id: @rusty.id, married: true)
 
-    visit "/parents/#{@marlane_and_don.id}"
+    visit parents_show_path(@marlane_and_don.id)
   end
 
   describe "User Story 2 - Parent Show" do
     it "shows the parent's page including all of its attributes" do
       save_and_open_page
-      expect(page).to have_content("Parent ID: 1")
+      expect(page).to have_content("Parent ID: #{@marlane_and_don.id}")
       expect(page).to have_content("Mother ID: #{@marlane.id}")
       expect(page).to have_content("Father ID: #{@don.id}")
       expect(page).to have_content("Married: true")
