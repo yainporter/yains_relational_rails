@@ -60,4 +60,10 @@ RSpec.describe "Family Show Page", type: :feature do
       expect(page).to have_content("Number of Lines descendents: 2")
     end
   end
+
+  describe "User Story 10 - Family Descendents Index Link" do
+    it "has a link to the family's descendents page" do
+      expect(page).to have_link("Descendents", href: family_descendents_path(@porters.id))
+    end
+  end
 end
