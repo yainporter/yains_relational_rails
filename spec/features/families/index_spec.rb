@@ -48,4 +48,14 @@ RSpec.describe 'Families Index Page', type: :feature do
       end
     end
   end
+
+  describe "User Story 9 - Families Index Link" do
+    it "has a link at the top of any page that takes me to the Families Index" do
+      expect(page).to have_link("Families Index", href: families_path)
+
+      visit descendents_path
+
+      expect(page).to have_link("Families Index", href: families_path)
+    end
+  end
 end
