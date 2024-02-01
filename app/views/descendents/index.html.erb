@@ -1,0 +1,10 @@
+<h1>List of All Family Members</h1>
+<ul>
+  <% @descendents.each do |descendent| %>
+  <li> First Name: <%= descendent.first_name %></li>
+  <li> Last Name: <%= descendent.last_name %></li>
+  <li> Family ID: <%= descendent.family_id %></li>
+  <li> Female: <%= descendent.female %></li>
+  <li> Languages Spoken: <%= descendent.languages_spoken %></li>
+  <% end %>
+</ul>

@@ -1,30 +1,30 @@
 require 'rails_helper'
 
-RSpec.describe 'Child Show Page', type: :feature do
+RSpec.describe 'Descendent Show Page', type: :feature do
   before(:each) do
-    @porters = Surname.create!(last_name: "Porter")
-    @finders = Surname.create!(last_name: "Finders")
-    @lines = Surname.create!(last_name: "Lines")
-    @burnett = Surname.create!(last_name: "Burnett")
-    @pini = Surname.create!(last_name: "Pini")
-    @jones = Surname.create!(last_name: "Jones")
-    @saechao = Surname.create!(last_name: "Saechao")
+    @porters = Family.create!(last_name: "Porter")
+    @finders = Family.create!(last_name: "Finders")
+    @lines = Family.create!(last_name: "Lines")
+    @burnett = Family.create!(last_name: "Burnett")
+    @pini = Family.create!(last_name: "Pini")
+    @jones = Family.create!(last_name: "Jones")
+    @saechao = Family.create!(last_name: "Saechao")
 
-    @marlane = Child.create(first_name: "Marlane", surname_id: @porters.id, female: true, languages_spoken: 1)
-    @don = Child.create(first_name: "Don", surname_id: @porters.id, female: false, languages_spoken: 2)
+    @marlane = Descendent.create(first_name: "Marlane", family_id: @porters.id, female: true, languages_spoken: 1)
+    @don = Descendent.create(first_name: "Don", family_id: @porters.id, female: false, languages_spoken: 2)
 
     @marlane_and_don = Parent.create(mother_id: @marlane.id, father_id: @don.id, married: true)
-    @aaron = Child.create(first_name: "Aaron", surname_id: @porters.id, female: false, parents_id: @marlane_and_don.id, languages_spoken: 1)
-    @stacee = Child.create(first_name: "Stacee", surname_id: @porters.id, female: true, parents_id: @marlane_and_don.id, languages_spoken: 1)
+    @aaron = Descendent.create(first_name: "Aaron", family_id: @porters.id, female: false, parents_id: @marlane_and_don.id, languages_spoken: 1)
+    @stacee = Descendent.create(first_name: "Stacee", family_id: @porters.id, female: true, parents_id: @marlane_and_don.id, languages_spoken: 1)
 
-    visit children_show_path(@marlane.id)
+    visit Descendentren_show_path(@marlane.id)
   end
 
-  describe 'User Story 4 - Child Show' do
-    it "displays the Child's attributes" do
+  describe 'User Story 4 - Descendent Show' do
+    it "displays the Descendent's attributes" do
       expect(page).to have_content("Marlane")
       expect(page).to have_content("Last Name: Porter")
-      expect(page).to have_content("Surname ID: #{@porters.id}")
+      expect(page).to have_content("family ID: #{@porters.id}")
       expect(page).to have_content("Female: true")
       expect(page).to have_content("Languages Spoken: 1")
     end

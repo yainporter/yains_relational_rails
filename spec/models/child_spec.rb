@@ -1,23 +1,23 @@
 require "rails_helper"
 
-RSpec.describe "Child", type: :model do
+RSpec.describe "Descendent", type: :model do
   before(:each) do
-    @porters = Surname.create!(last_name: "Porter")
-    @finders = Surname.create!(last_name: "Finders")
-    @lines = Surname.create!(last_name: "Lines")
-    @burnett = Surname.create!(last_name: "Burnett")
-    @pini = Surname.create!(last_name: "Pini")
-    @jones = Surname.create!(last_name: "Jones")
-    @saechao = Surname.create!(last_name: "Saechao")
+    @porters = Family.create!(last_name: "Porter")
+    @finders = Family.create!(last_name: "Finders")
+    @lines = Family.create!(last_name: "Lines")
+    @burnett = Family.create!(last_name: "Burnett")
+    @pini = Family.create!(last_name: "Pini")
+    @jones = Family.create!(last_name: "Jones")
+    @saechao = Family.create!(last_name: "Saechao")
 
-    @marlane = Child.create(first_name: "Marlane", surname_id: @porters.id, female: true, languages_spoken: 1)
-    @don = Child.create(first_name: "Don", surname_id: @porters.id, female: false, languages_spoken: 2)
+    @marlane = Descendent.create(first_name: "Marlane", family_id: @porters.id, female: true, languages_spoken: 1)
+    @don = Descendent.create(first_name: "Don", family_id: @porters.id, female: false, languages_spoken: 2)
 
     @marlane_and_don = Parent.create(mother_id: @marlane.id, father_id: @don.id, married: true)
   end
 
   describe "#last_name" do
-    it "prints the last name of the Child" do
+    it "prints the last name of the Descendent" do
       expect(@marlane.last_name).to eq("Porter")
     end
   end
