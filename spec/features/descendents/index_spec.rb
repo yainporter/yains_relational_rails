@@ -52,4 +52,16 @@ RSpec.describe "Descendents Index Page", type: :feature do
       expect(page).to have_content("Languages Spoken: 2")
     end
   end
+
+  describe "User Story 8 - Descendent Index Link" do
+    it "has a link at the top of any page that redirects to the Child Index" do
+      visit descendents_path
+
+      expect(page).to have_link("Descendents Index", href: descendents_path)
+
+      visit families_path
+
+      expect(page).to have_link("Descendents Index", href: descendents_path)
+    end
+  end
 end

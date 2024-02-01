@@ -11,6 +11,12 @@
   </head>
 
   <body>
+    <nav>
+      <ul>
+        <li><%= link_to "Descendents Index", descendents_path %></li>
+        <li><%= link_to "Families Index", families_path %></li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
