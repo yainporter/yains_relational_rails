@@ -32,7 +32,7 @@ gem "shoulda-matchers", "~> 5.0"
 ### CRUD
 <dl>
   <dt> User Story 1, Parent Index</dt>
-  <dt>[] done
+  <dt>[x] done
   <dd> For each parent table </dd>
   <dd> As a visitor
   <dd> When I visit '/parents'
@@ -41,7 +41,7 @@ gem "shoulda-matchers", "~> 5.0"
 
 <dl>
   <dt>User Story 2, Parent Show</dt>
-  <dt>[] done
+  <dt>[x] done
   <dd>As a visitor
   <dd>When I visit '/parents/:id'
   <dd>Then I see the parent with that id including the parent's attributes
