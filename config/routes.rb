@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   get "/families", to: "families#index", as: :families
+  get "/families/new", to: "families#new", as: :families_new
+  post "families/create", to: "families#create", as: :families_create
   get "/families/:id", to: "families#show", as: :families_show
   get "/families/:id/descendents", to: "family_descendents#index", as: :family_descendents
 

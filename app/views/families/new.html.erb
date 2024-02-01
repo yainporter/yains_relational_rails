@@ -1,0 +1,5 @@
+<%= form_with url: families_create_path, method: :post, data: { turbo: false } do |f| %> 
+  <%= f.label :name, 'Family Name:' %>
+  <%= f.text_area :name %>
+  <%= f.submit "Create Family" %>
+<% end %>
