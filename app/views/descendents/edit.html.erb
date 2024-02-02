@@ -1,5 +1,5 @@
-<h1>Add New Descendent</h1>
-<%= form_with url: family_descendents_create_path, method: :post, data: { turbo: false } do |f| %> 
+<h1>Edit <%= @descendent.first_name %>'s Information</h1>
+<%= form_with url: descendents_update_path, method: :patch, data: { turbo: false } do |f| %> 
   <%= f.label :first_name, 'First Name:' %>
   <%= f.text_field :first_name %> 
   <%= f.label :family_id, 'Family ID:' %> 
@@ -13,5 +13,5 @@
   <%= f.label :female, 'False', :value => false %>
   <%= f.label :languages_spoken, 'Languages Spoken:' %>
   <%= f.number_field :languages_spoken %>
-  <%= f.submit "Create Descendent" %>
+  <%= f.submit "Update Descendent" %>
 <% end %>

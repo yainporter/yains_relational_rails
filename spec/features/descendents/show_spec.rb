@@ -26,4 +26,14 @@ RSpec.describe 'Descendent Show Page', type: :feature do
       expect(page).to have_content("Languages Spoken: 1")
     end
   end
+
+  describe "User Story 14 - Descendent Update" do
+    it "has a link to update the Descendent" do
+      expect(page).to have_content("Edit Descendent")
+
+      click_link ("Edit Descendent")
+
+      expect(page.current_path).to eq(descendents_edit_path(@marlane))
+    end
+  end
 end

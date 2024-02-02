@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get "/descendents", to: "descendents#index", as: :descendents
   get "/descendents/:id", to: "descendents#show", as: :descendents_show
-
+  get "/descendents/:id/edit", to: "descendents#edit", as: :descendents_edit
+  patch "/descendents/:id/update", to: "descendents#update", as: :descendents_update
 
 end
