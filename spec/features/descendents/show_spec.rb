@@ -36,4 +36,16 @@ RSpec.describe 'Descendent Show Page', type: :feature do
       expect(page.current_path).to eq(descendents_edit_path(@marlane))
     end
   end
+
+  describe "User Story 20 - Descendent Delete" do
+    it "has a link to delete the Descendent" do
+      expect(page).to have_link("Delete Descendent", href: descendents_delete_path(@marlane.id))
+
+      click_link("Delete Descendent")
+
+      expect(page.current_path).to eq(descendents_path)
+
+      expect(page).to have_no_content("Marlane")
+    end
+  end
 end

@@ -18,6 +18,13 @@ class DescendentsController < ApplicationController
     redirect_to descendents_show_path(descendent)
   end
 
+  def destroy
+    descendent = Descendent.find(params[:id])
+    descendent.destroy
+
+    redirect_to descendents_path
+  end
+
   private
 
   def descendent_params

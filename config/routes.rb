@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   get "/descendents/:id", to: "descendents#show", as: :descendents_show
   get "/descendents/:id/edit", to: "descendents#edit", as: :descendents_edit
   patch "/descendents/:id/update", to: "descendents#update", as: :descendents_update
+  delete "/descendents/:id", to: "descendents#destroy", as: "descendents_delete"
 
 end
