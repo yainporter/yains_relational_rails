@@ -1,12 +1,15 @@
 <h1>List of Descendents</h1>
+<%= link_to 'Create New Descendent', family_descendents_new_path %>
+<%= link_to 'Sort Descendents Alphabetically', family_descendents_path(params[:id], filter: true)  %>
 <ul>
   <% @descendents.each do |descendent| %>
-    <li> First Name: <%= descendent.first_name %></li>
-    <li> Last Name: <%= descendent.last_name %></li>
-    <li> Family ID: <%= descendent.family_id %></li>
-    <li> Female: <%= descendent.female %></li>
-    <li> Languages Spoken: <%= descendent.languages_spoken %></li>
+    <div>
+      <li> First Name: <%= descendent.first_name %></li>
+      <li> Last Name: <%= descendent.last_name %></li>
+      <li> Family ID: <%= descendent.family_id %></li>
+      <li> Female: <%= descendent.female %></li>
+      <li> Languages Spoken: <%= descendent.languages_spoken %></li>
+    </div>
+    <br>
   <% end %>
 </ul>
-
-<%= link_to 'Create New Descendent', family_descendents_new_path %>

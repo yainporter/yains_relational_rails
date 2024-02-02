@@ -1,7 +1,6 @@
 class Families::DescendentsController < ApplicationController
   def index
-    @descendents = Family.find(params[:id]).descendents
-    
+    @descendents = index_filter(params)
   end
 
   def new
@@ -19,5 +18,13 @@ class Families::DescendentsController < ApplicationController
 
   def descendent_params
     params.permit(:first_name, :family_id, :female, :languages_spoken)
+  end
+
+  def index_filter(params)
+    if params[:filter]
+      Descendent.sort_alphabetically(params[:id])
+    else
+      Descendent.family_descendents(params[:id])
+    end
   end
 end

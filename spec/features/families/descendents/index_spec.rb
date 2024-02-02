@@ -61,4 +61,20 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
     end
   end
 
+  describe "User Story 16 - Sort Descendents" do
+    it "sorts descendents alphabetically" do
+      expect("Marlane").to appear_before("Don")
+      expect("Justin").to appear_before("Brittney")
+
+      expect(page).to have_link("Sort Descendents Alphabetically")
+
+      click_link("Sort Descendents Alphabetically")
+
+      expect(page.current_path).to eq(family_descendents_path(@porters.id))
+
+      expect("Don").to appear_before("Marlane")
+      expect("Brittney").to appear_before("Justin")
+      expect("Brittney").to appear_before("Don")
+    end
+  end
 end

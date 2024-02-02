@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Families Index Page', type: :feature do
   before(:each) do
-    @porters = Family.create!(name: "Porter")
+    @porter = Family.create!(name: "Porter")
     @finder = Family.create!(name: "Finder")
     @lines = Family.create!(name: "Lines")
     @burnett = Family.create!(name: "Burnett")
@@ -38,8 +38,8 @@ RSpec.describe 'Families Index Page', type: :feature do
     end
 
     it "displays when the record was created next to each of the records" do
-      within "#family-#{@porters.id}" do
-        expect(page).to have_content("Created at: #{@porters.created_at}")
+      within "#family-#{@porter.id}" do
+        expect(page).to have_content("Created at: #{@porter.created_at}")
       end
       within "#family-#{@finder.id}" do
         expect(page).to have_content("Created at: #{@finder.created_at}")
@@ -67,6 +67,15 @@ RSpec.describe 'Families Index Page', type: :feature do
       click_link("Add Family")
 
       expect(page.current_path).to eq(families_new_path)
+    end
+  end
+
+  describe "User Story 17 - Family Update from Family Index" do
+    it "has a link to edit each Family's information" do
+      within "#family-#{@porter.id}" do
+        expect(page).to have_content("Porter")
+        expect(page).to have_link("Edit", href: families_edit_path(@porter))
+      end
     end
   end
 end
