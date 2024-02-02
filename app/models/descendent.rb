@@ -1,5 +1,7 @@
 class Descendent < ApplicationRecord
   belongs_to :family
+  has_one :relationship_as_mom, class_name: "Relationship", foreign_key: "mom_id", dependent: :destroy
+  has_one :relationship_as_dad, class_name: "Relationship", foreign_key: "dad_id", dependent: :destroy
 
   def last_name
     family.name

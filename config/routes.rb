@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post "families/create", to: "families#create", as: :families_create
   patch "/families/:id", to: "families#update", as: :families_update
   get "/families/:id", to: "families#show", as: :families_show
+  delete "/families/:id", to: "families#destroy", as: :families_delete
+
 
   get "/families/:id/descendents", to: "families/descendents#index", as: :family_descendents
   get "/families/:id/descendents/new", to: "families/descendents#new", as: :family_descendents_new

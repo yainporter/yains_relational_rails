@@ -73,11 +73,9 @@ RSpec.describe "Descendents Index Page", type: :feature do
 
   describe "User Story 18 - Descendent Update from Descendent Index" do
     it "has a link next to every Descendent to update info" do
-      save_and_open_page
       within "#descendent-#{@amy.id}" do
         expect(page).to have_content("Amy")
         expect(page).to have_link("Edit", href: descendents_edit_path(@amy.id))
-        save_and_open_page
 
         click_link("Edit")
 
