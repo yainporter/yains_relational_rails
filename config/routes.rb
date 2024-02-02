@@ -14,9 +14,9 @@ Rails.application.routes.draw do
   patch "/families/:id", to: "families#update", as: :families_update
   get "/families/:id", to: "families#show", as: :families_show
 
-  get "/families/:id/descendents", to: "family_descendents#index", as: :family_descendents
-  get "/families/:id/descendents/new", to: "family_descendents#new", as: :family_descendents_new
-  post "/families/:id/descendents/create", to: "family_descendents#create", as: :family_descendents_create
+  get "/families/:id/descendents", to: "families/descendents#index", as: :family_descendents
+  get "/families/:id/descendents/new", to: "families/descendents#new", as: :family_descendents_new
+  post "/families/:id/descendents/create", to: "families/descendents#create", as: :family_descendents_create
 
   get "/descendents", to: "descendents#index", as: :descendents
   get "/descendents/:id", to: "descendents#show", as: :descendents_show
