@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
   def index
-    @families = Family.all
+    @families = Family.sort_by_creation
   end
 
   def show

@@ -1,6 +1,7 @@
 class Families::DescendentsController < ApplicationController
   def index
-    @family_descendents = Family.find(params[:id]).descendents
+    @descendents = Family.find(params[:id]).descendents
+    
   end
 
   def new

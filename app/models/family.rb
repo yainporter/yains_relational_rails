@@ -1,3 +1,7 @@
 class Family < ApplicationRecord
   has_many :descendents
+
+  def self.sort_by_creation
+    Family.all.order(created_at: :desc)
+  end
 end

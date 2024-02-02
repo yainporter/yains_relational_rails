@@ -29,11 +29,14 @@ RSpec.describe 'Families Index Page', type: :feature do
 
   describe "User Story 6 - Parent Children Index" do
     it "displays records that are ordered by most recently created first" do
-      expect("Porter").to appear_before("Finder")
-      expect("Finder").to appear_before("Lines")
-      expect("Lines").to appear_before("Burnett")
-      expect("Pini").to appear_before("Jones")
+      @schnepf = Family.create!(id: 1, name: "Schnepf")
+
+      expect("Saechao").to appear_before("Schnepf")
       expect("Jones").to appear_before("Saechao")
+      expect("Pini").to appear_before("Jones")
+      expect("Lines").to appear_before("Burnett")
+      expect("Finder").to appear_before("Lines")
+      expect("Porter").to appear_before("Finder")
     end
 
     it "displays when the record was created next to each of the records" do
