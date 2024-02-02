@@ -39,7 +39,7 @@ RSpec.describe "Family Edit Page", type: :feature do
 
   describe "User Story 12 - Family Update" do
     it "has a form to edit the Family's attributes" do
-      expect(page).to have_content("Edit #{@porters.name} Name")
+      expect(page).to have_field("Edit #{@porters.name} Name")
       fill_in "Edit #{@porters.name} Name", with: "Porter!!"
 
       expect(page).to have_button("Update Family")

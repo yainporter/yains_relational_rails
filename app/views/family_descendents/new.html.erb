@@ -1,0 +1,17 @@
+<h1>New Descendent</h1>
+<%= form_with url: family_descendents_create_path, method: :post, data: { turbo: false } do |f| %> 
+  <%= f.label :first_name, 'First Name:' %>
+  <%= f.text_field :first_name %> 
+  <%= f.label :family_id, 'Family ID:' %> 
+  <%= f.number_field :family_id %> 
+  <%= f.label :parents_id, 'Parents ID:' %> 
+  <%= f.number_field :parents_id %> 
+  <%= f.label :female, 'Female:' %>
+  <%= f.radio_button :female, 'true' %>
+  <%= f.label :female, 'True', :value => true %>
+  <%= f.radio_button :female, 'false' %>
+  <%= f.label :female, 'False', :value => false %>
+  <%= f.label :languages_spoken, 'Languages Spoken:' %>
+  <%= f.number_field :languages_spoken %>
+  <%= f.submit "Create Descendent" %>
+<% end %>

@@ -50,4 +50,15 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
       expect(page).to have_content("Languages Spoken: 1")
     end
   end
+
+  describe "User Story 13 - Family Descendents Creation" do
+    it "has a link to add a new Descendent for that Family" do
+      expect(page).to have_link("Create New Descendent")
+
+      click_link("Create New Descendent")
+
+      expect(page.current_path).to eq(family_descendents_new_path(@porters.id))
+    end
+  end
+
 end

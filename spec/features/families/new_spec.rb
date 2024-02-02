@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Family Show Page", type: :feature do
+RSpec.describe "Families New Page", type: :feature do
   before(:each) do
     @porters = Family.create!(name: "Porter")
     @finder = Family.create!(name: "Finder")
@@ -9,21 +9,19 @@ RSpec.describe "Family Show Page", type: :feature do
     @pini = Family.create!(name: "Pini")
     @jones = Family.create!(name: "Jones")
     @saechao = Family.create!(name: "Saechao")
-    @gillespie = Family.create!(name: "Gillespie")
-    @taylor = Family.create!(name: "Taylor")
-    @schnepf = Family.create!(name: "Schnepf")
-    @edmunds = Family.create!(name: "Edmunds")
 
     visit families_new_path
   end
 
   describe "User Story 11 - Family Creation" do
     it "has a form on the new family page" do
+      visit families_path
+
       expect(page).to have_no_content("Taylor")
 
       visit families_new_path
 
-      expect(page).to have_content("Family Name:")
+      expect(page).to have_field("Family Name:")
 
       fill_in "Family Name:", with: "Taylor"
 

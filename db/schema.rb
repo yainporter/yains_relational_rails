@@ -40,8 +40,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_213021) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "descendents", "descendents", column: "parents_id"
   add_foreign_key "descendents", "families"
+  add_foreign_key "descendents", "relationships", column: "parents_id"
   add_foreign_key "relationships", "descendents", column: "dad_id"
   add_foreign_key "relationships", "descendents", column: "mom_id"
 end
