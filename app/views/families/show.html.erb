@@ -2,3 +2,4 @@
 <p>Family ID: <%= @family.id %></p>
 <p>Number of <%= @family.name %> descendents: <%= @family.descendents.count %></p>
 <%= link_to 'Descendents', family_descendents_path(@family.id) %>
+<%= link_to 'Edit Family Information', families_edit_path(@family.id) %>

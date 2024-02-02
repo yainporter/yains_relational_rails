@@ -64,26 +64,8 @@ RSpec.describe 'Families Index Page', type: :feature do
       expect(page).to have_link("Add Family", href: families_new_path)
 
       click_link("Add Family")
-      
+
       expect(page.current_path).to eq(families_new_path)
-    end
-
-    it "has a form on the new family page" do
-      expect(page).to have_no_content("Taylor")
-
-      visit families_new_path
-
-      expect(page).to have_content("Family Name:")
-
-      fill_in "Family Name:", with: "Taylor"
-
-      expect(page).to have_button("Create Family")
-
-      click_button "Create Family"
-
-      expect(page.current_path).to eq(families_path)
-
-      expect(page).to have_content("Taylor")
     end
   end
 end

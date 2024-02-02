@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Family Show Page", type: :feature do
+RSpec.describe "Family Edit Page", type: :feature do
   before(:each) do
     @porters = Family.create!(name: "Porter")
     @finder = Family.create!(name: "Finder")
@@ -34,38 +34,19 @@ RSpec.describe "Family Show Page", type: :feature do
     @rusty = Descendent.create(first_name: "Rusty", family_id: @porters.id, female: false, languages_spoken: 3)
     @yain = Descendent.create(first_name: "Yain", family_id: @porters.id, female: true, languages_spoken: 3)
 
-    visit families_show_path(@porters.id)
-  end
-
-  describe "User Story 2 - Family Show" do
-    it "shows the Family's page including all of its attributes" do
-      expect(page).to have_content("Family ID: #{@porters.id}")
-      expect(page).to have_content("#{@porters.id}")
-    end
-  end
-
-  describe "User Story 7 - Parent Child Count" do
-    it "displays the number of children associated with the parent" do
-      expect(page).to have_content("Number of Porter descendents: 10")
-
-      visit families_show_path(@lines.id)
-      expect(page).to have_content("Number of Lines descendents: 2")
-    end
-  end
-
-  describe "User Story 10 - Family Descendents Index Link" do
-    it "has a link to the family's descendents page" do
-      expect(page).to have_link("Descendents", href: family_descendents_path(@porters.id))
-    end
+    visit families_edit_path(@porters.id)
   end
 
   describe "User Story 12 - Family Update" do
-    it "has a link to update the Family" do
-      expect(page).to have_link("Edit Family Information")
+    it "has a form to edit the Family's attributes" do
+      expect(page).to have_content("Edit #{@porters.name} Name")
+      fill_in "Edit #{@porters.name} Name", with: "Porter!!"
 
-      click_link("Edit Family Information")
+      expect(page).to have_button("Update Family")
+      click_button("Update Family")
 
-      expect(page.current_path).to eq(families_edit_path(@porters.id))
+      expect(page.current_path).to eq(families_show_path(@porters.id))
+      expect(page).to have_content("Porter!!")
     end
   end
 end
