@@ -45,11 +45,11 @@ RSpec.describe "Descendents Index Page", type: :feature do
       expect(page).to have_content("Female: true")
       expect(page).to have_content("Languages Spoken: 1")
 
-      expect(page).to have_content("First Name: Don")
-      expect(page).to have_content("Last Name: Porter")
-      expect(page).to have_content("Family ID: #{@porters.id}")
-      expect(page).to have_content("Female: false")
-      expect(page).to have_content("Languages Spoken: 2")
+      # expect(page).to have_content("First Name: Don")
+      # expect(page).to have_content("Last Name: Porter")
+      # expect(page).to have_content("Family ID: #{@porters.id}")
+      # expect(page).to have_content("Female: false")
+      # expect(page).to have_content("Languages Spoken: 2")
     end
   end
 
@@ -60,6 +60,14 @@ RSpec.describe "Descendents Index Page", type: :feature do
       visit families_path
 
       expect(page).to have_link("Descendents Index", href: descendents_path)
+    end
+  end
+
+  describe "User Story 15 - Descendent Index only shows 'true' Records" do
+    it "only displays records where female: true" do
+      expect(page).to have_no_content("First Name: Don")
+      expect(page).to have_no_content("First Name: Aaron")
+      expect(page).to have_no_content("Female: false")
     end
   end
 end

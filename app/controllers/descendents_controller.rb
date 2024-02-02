@@ -1,6 +1,6 @@
 class DescendentsController < ApplicationController
   def index
-    @descendents = Descendent.all
+    @descendents = Descendent.true_records
   end
 
   def show

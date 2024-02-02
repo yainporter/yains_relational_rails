@@ -14,9 +14,19 @@ RSpec.describe "Descendent", type: :model do
     @don = Descendent.create(first_name: "Don", family_id: @porters.id, female: false, languages_spoken: 2)
   end
 
-  describe "#last_name" do
-    it "prints the last name of the Descendent" do
-      expect(@marlane.last_name).to eq("Porter")
+  describe "class methods" do
+    describe ".true_records" do
+      it "returns all descendents that are female" do
+        expect(Descendent.true_records).to eq([@marlane])
+      end
+    end
+  end
+
+  describe "instance methods" do
+    describe "#last_name" do
+      it "prints the last name of the Descendent" do
+        expect(@marlane.last_name).to eq("Porter")
+      end
     end
   end
 end
