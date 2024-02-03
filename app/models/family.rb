@@ -7,9 +7,7 @@ class Family < ApplicationRecord
   end
 
   def self.sort_by_number_of_descendents
-    require 'pry'; binding.pry
-    Family.select('families.*, count(descendents.id) as descendents_count').joins(:descendents).group('families.id').order('descendents_count desc')
-    ### Does not return families where family.count_descendents = 0
+    Family.select('families.*, count(descendents.id) as descendents_count').left_outer_joins(:descendents).group('families.id').order('descendents_count desc').includes(:descendents)
   end
 
   def count_descendents

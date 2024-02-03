@@ -119,7 +119,7 @@ RSpec.describe 'Families Index Page', type: :feature do
 
       click_link("Sort Families by Number of Descendents")
       expect(page.current_path).to eq(families_path)
-
+      save_and_open_page
       families = Family.all
       families.each do |family|
         within "#family-#{family.id}" do
