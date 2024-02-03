@@ -78,4 +78,21 @@ RSpec.describe 'Families Index Page', type: :feature do
       end
     end
   end
+
+  describe "User Story 22 - Family Delete From Family Index" do
+    it "has a link next to every Family to delete its record" do
+      families = Family.all
+      families.each do |family|
+        within "#family-#{family.id}" do
+          expect(page).to have_link("Delete", href: families_delete_path(family))
+
+          if @porter.id
+            click_link("Delete")
+            expect(page.current_path).to eq(families_path)
+          end
+        end
+      end
+      expect(page).to_not have_selector("#family-#{@porter.id}")
+    end
+  end
 end

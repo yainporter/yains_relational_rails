@@ -1,7 +1,7 @@
 <h1>List of Families:</h1>
 <ul>
   <% @families.each do |family| %>
-    <li id="family-<%= family.id %>"> <%= family.name %> - Created at: <%= family.created_at %> <%= link_to 'Edit', families_edit_path(family.id) %></li>
+    <li id="family-<%= family.id %>"> <%= family.name %> - Created at: <%= family.created_at %> [<%= link_to 'Edit', families_edit_path(family.id) %>] [<%= link_to 'Delete', families_delete_path(family), method: :delete %>]</li>
   <% end %>
 </ul>
 <%= link_to 'Add Family', families_new_path %>
