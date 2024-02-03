@@ -17,4 +17,8 @@ class Descendent < ApplicationRecord
   def self.sort_alphabetically(family_id)
     Descendent.family_descendents(family_id).order(:first_name)
   end
+
+  def self.threshold_filter(family_id, number)
+    Descendent.family_descendents(family_id).limit(number)
+  end
 end

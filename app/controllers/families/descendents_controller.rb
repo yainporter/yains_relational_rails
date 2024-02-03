@@ -23,6 +23,8 @@ class Families::DescendentsController < ApplicationController
   def index_filter(params)
     if params[:filter]
       Descendent.sort_alphabetically(params[:id])
+    elsif params[:sort_by].present?
+      Descendent.threshold_filter(params[:id], params[:sort_by])
     else
       Descendent.family_descendents(params[:id])
     end

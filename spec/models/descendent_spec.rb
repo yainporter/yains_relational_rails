@@ -37,6 +37,12 @@ RSpec.describe "Descendent", type: :model do
         expect(Descendent.sort_alphabetically(@finder.id)).to eq([@ethan, @hana, @kael, @oran])
       end
     end
+
+    describe ".threshold_filter" do
+      it "limits the number of descendents returned" do
+        expect(Descendent.threshold_filter(@finder.id, 3)).to eq([@hana, @ethan, @oran])
+      end
+    end
   end
 
   describe "instance methods" do

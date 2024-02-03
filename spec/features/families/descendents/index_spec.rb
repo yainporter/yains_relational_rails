@@ -77,4 +77,28 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
       expect("Brittney").to appear_before("Don")
     end
   end
+
+  describe "User Story 21 - Display Records Over a Given Threshold" do
+    it "has a form that returns a threshold" do
+
+      @porters.descendents.each do |descendent|
+        expect(page).to have_content(descendent.first_name)
+      end
+
+      expect(page).to have_field(:sort_by)
+      expect(page).to have_button("Submit")
+
+      fill_in("Threshold", with: 2)
+      click_button("Submit")
+
+      expect(page.current_path).to eq(family_descendents_path(@porters.id))
+
+      expect(page).to have_content("Marlane")
+      expect(page).to have_content("Don")
+
+      @porters.descendents[2..-1].each do |descendent|
+        expect(page).to have_no_content(descendent.first_name)
+      end
+    end
+  end
 end
