@@ -8,6 +8,7 @@
       <li> Female: <%= descendent.female %></li>
       <li> Languages Spoken: <%= descendent.languages_spoken %></li>
       <li><%= link_to 'Edit', descendents_edit_path(descendent) %></li>
+      <li><%= link_to 'Delete', descendents_delete_path(descendent), method: :delete %></li>
       <br>
     </div>
   <% end %>

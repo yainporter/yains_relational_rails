@@ -83,4 +83,21 @@ RSpec.describe "Descendents Index Page", type: :feature do
       end
     end
   end
+
+  describe "User Story 23 - Descendent Delete From Descendent Index" do
+    it "has a link next to every Family to delete its record" do
+      descendents = Descendent.where(female: true)
+      descendents.each do |descendent|
+        within "#descendent-#{descendent.id}" do
+          expect(page).to have_link("Delete", href: descendents_delete_path(descendent))
+
+          if @amy.id
+            click_link("Delete")
+            expect(page.current_path).to eq(descendents_path)
+          end
+        end
+      end
+      expect(page).to_not have_selector("#descendent-#{@amy.id}")
+    end
+  end
 end
