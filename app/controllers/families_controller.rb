@@ -1,6 +1,6 @@
 class FamiliesController < ApplicationController
   def index
-    @families = Family.sort_by_creation
+    @families = index_filter
   end
 
   def show
@@ -40,5 +40,13 @@ class FamiliesController < ApplicationController
 
   def family_params
     params.permit(:name)
+  end
+
+  def index_filter
+    if params[:sort]
+      @families = Family.sort_by_number_of_descendents
+    else
+      @families = Family.sort_by_creation
+    end
   end
 end

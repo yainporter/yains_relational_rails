@@ -1,7 +1,15 @@
 <h1>List of Families:</h1>
+<%= link_to 'Sort Families by Number of Descendents', families_path(sort: true) %>
 <ul>
   <% @families.each do |family| %>
-    <li id="family-<%= family.id %>"> <%= family.name %> - Created at: <%= family.created_at %> [<%= link_to 'Edit', families_edit_path(family.id) %>] [<%= link_to 'Delete', families_delete_path(family), method: :delete %>]</li>
+    <div id="family-<%= family.id %>">
+      <li> <%= family.name %> [<%= link_to 'Edit', families_edit_path(family.id) %>] [<%= link_to 'Delete', families_delete_path(family), method: :delete %>] </li>
+      <% if params[:sort] %>
+        <li>Number of Descendents: <%= family.count_descendents %></li>
+      <% end %>
+      <li>Created at: <%= family.created_at %> </li>
+    </div>
+    <br>
   <% end %>
 </ul>
 <%= link_to 'Add Family', families_new_path %>

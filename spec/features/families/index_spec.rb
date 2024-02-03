@@ -10,6 +10,23 @@ RSpec.describe 'Families Index Page', type: :feature do
     @jones = Family.create!(name: "Jones")
     @saechao = Family.create!(name: "Saechao")
 
+
+    @marlane = Descendent.create(first_name: "Marlane", family_id: @porter.id, female: true, languages_spoken: 1)
+    @don = Descendent.create(first_name: "Don", family_id: @porter.id, female: false, languages_spoken: 2)
+    @aaron = Descendent.create(first_name: "Aaron", family_id: @porter.id, female: false, languages_spoken: 1)
+    @stacee = Descendent.create(first_name: "Stacee", family_id: @porter.id, female: true, languages_spoken: 1)
+    @amy = Descendent.create(first_name: "Amy", family_id: @finder.id, female: true, languages_spoken: 1)
+    @rich = Descendent.create(first_name: "Rich", family_id: @finder.id, female: false, languages_spoken: 1)
+    @alissa = Descendent.create(first_name: "Alissa", family_id: @lines.id, female: true, languages_spoken: 1)
+    @joe = Descendent.create(first_name: "Joe", family_id: @lines.id, female: false, languages_spoken: 1)
+    @cami = Descendent.create(first_name: "Cami", family_id: @lines.id, female: true)
+    @justin = Descendent.create(first_name: "Justin", family_id: @lines.id, female: false, languages_spoken: 1)
+    @brittney = Descendent.create(first_name: "Brittney", family_id: @lines.id, female: true, languages_spoken: 1)
+    @lee = Descendent.create(first_name: "Lee", family_id: @porter.id, female: false, languages_spoken: 2)
+    @amanda = Descendent.create(first_name: "Amanda", family_id: @porter.id, female: true, languages_spoken: 1)
+    @rusty = Descendent.create(first_name: "Rusty", family_id: @finder.id, female: false, languages_spoken: 3)
+    @yain = Descendent.create(first_name: "Yain", family_id: @porter.id, female: true, languages_spoken: 3)
+
     visit families_path
   end
 
@@ -93,6 +110,25 @@ RSpec.describe 'Families Index Page', type: :feature do
         end
       end
       expect(page).to_not have_selector("#family-#{@porter.id}")
+    end
+  end
+
+  describe "Extension 1 - Sort Families by Number of Descendents" do
+    it "has a link to filter families by descendents count" do
+      expect(page).to have_link("Sort Families by Number of Descendents", href: families_path(sort: true))
+
+      click_link("Sort Families by Number of Descendents")
+      expect(page.current_path).to eq(families_path)
+
+      families = Family.all
+      families.each do |family|
+        within "#family-#{family.id}" do
+          expect(page).to have_content(family.descendents.count)
+        end
+      end
+
+      expect("Porter").to appear_before("Lines")
+      expect("Lines").to appear_before("Finder")
     end
   end
 end
