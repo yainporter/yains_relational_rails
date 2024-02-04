@@ -28,12 +28,18 @@ class DescendentsController < ApplicationController
   private
 
   def descendent_params
-    params.permit(:first_name, :family_id, :parents_id, :female, :languages_spoken)
+    params.permit(:first_name,
+                  :family_id,
+                  :parents_id,
+                  :female,
+                  :languages_spoken)
   end
 
   def index_filter
     if params[:keyword]
       @descendents = Descendent.descendents_keyword_search(params[:keyword])
+    elsif params[:partial_match]
+      @descendents = Descendent.descendents_partial_match(params[:partial_match])
     else
       @descendents = Descendent.true_records
     end

@@ -47,6 +47,8 @@ class FamiliesController < ApplicationController
       @families = Family.sort_by_number_of_descendents
     elsif params[:keyword]
       @families = Family.keyword_search(params[:keyword])
+    elsif params[:partial_match]
+      @families = Family.partial_match(params[:partial_match])
     else
       @families = Family.sort_by_creation
     end

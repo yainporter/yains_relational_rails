@@ -1,12 +1,21 @@
 <h1>List of All Family Members</h1>
-<%= form_with url: descendents_path, method: :get, data: { turbo: false } do |f| %> 
-  <%= f.label :keyword, 'Search by keyword:' %>
-  <%= f.text_area :keyword %>
-  <%= f.submit "Search" %>
-<% end %>
+<div id="descendents-keyword">
+  <%= form_with url: descendents_path, method: :get, data: { turbo: false } do |f| %>
+    <%= f.label :keyword, 'Search by keyword:' %>
+    <%= f.text_area :keyword %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
+<div id="descendents-partial-match">
+  <%= form_with url: descendents_path, method: :get, data: { turbo: false } do |f| %>
+    <%= f.label :partial_match, 'Search by partial match:' %>
+    <%= f.text_area :partial_match %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
 <ul>
   <% @descendents.each do |descendent| %>
-    <div id="descendent-<%= descendent.id %>">      
+    <div id="descendent-<%= descendent.id %>">
       <li> First Name: <%= descendent.first_name %></li>
       <li> Last Name: <%= descendent.last_name %></li>
       <li> Family ID: <%= descendent.family_id %></li>

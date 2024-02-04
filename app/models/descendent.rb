@@ -12,7 +12,7 @@ class Descendent < ApplicationRecord
   end
 
   def self.family_descendents(family_id)
-    Descendent.where("family_id = ?", family_id)
+    Descendent.where(family_id: family_id)
   end
   def self.sort_alphabetically(family_id)
     Descendent.family_descendents(family_id).order(:first_name)
@@ -24,5 +24,9 @@ class Descendent < ApplicationRecord
 
   def self.descendents_keyword_search(keyword)
     Descendent.where(first_name: keyword)
+  end
+
+  def self.descendents_partial_match(keyword)
+    Descendent.where("first_name ILIKE ?", "%#{keyword}%")
   end
 end

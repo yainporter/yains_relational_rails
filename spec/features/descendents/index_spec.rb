@@ -106,8 +106,10 @@ RSpec.describe "Descendents Index Page", type: :feature do
       expect(page).to have_field(:keyword)
       expect(page).to have_button("Search")
 
-      fill_in(:keyword, with: "Marlane")
-      click_button("Search")
+      within "#descendents-keyword" do
+        fill_in(:keyword, with: "Marlane")
+        click_button("Search")
+      end
 
       expect(page.current_path).to eq(descendents_path)
       expect(page).to have_no_content("Amy")
@@ -117,6 +119,29 @@ RSpec.describe "Descendents Index Page", type: :feature do
       expect(page).to have_no_content("Amanda")
       expect(page).to have_no_content("Yain")
       expect(page).to have_content("Marlane")
+    end
+  end
+
+  describe "Extension 3 - Search by name (partial match) " do
+    it "has a partial match filter" do
+      mary = Descendent.create!(first_name: "Mary", family_id: @porters.id, female: true, languages_spoken: 1)
+
+      expect(page).to have_field(:partial_match)
+
+      within "#descendents-partial-match" do
+        fill_in :partial_match, with: "Ma"
+        click_button "Search"
+      end
+
+      expect(page.current_path).to eq(descendents_path)
+      expect(page).to have_no_content("Amy")
+      expect(page).to have_no_content("Dana")
+      expect(page).to have_no_content("Stacee")
+      expect(page).to have_no_content("Alissa")
+      expect(page).to have_no_content("Yain")
+      expect(page).to have_content("Marlane")
+      expect(page).to have_content("Mary")
+      expect(page).to have_content("Amanda")
     end
   end
 end

@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/families", to: "families#index", as: :families
   get "/families/new", to: "families#new", as: :families_new
-  get "families/:id/edit", to: "families#edit", as: :families_edit
-  post "families/create", to: "families#create", as: :families_create
-  patch "/families/:id", to: "families#update", as: :families_update
+  post "/families/create", to: "families#create", as: :families_create
   get "/families/:id", to: "families#show", as: :families_show
+  get "/families/:id/edit", to: "families#edit", as: :families_edit
+  patch "/families/:id", to: "families#update", as: :families_update
   delete "/families/:id", to: "families#destroy", as: :families_delete
 
 

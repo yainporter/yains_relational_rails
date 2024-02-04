@@ -49,6 +49,14 @@ RSpec.describe "Descendent", type: :model do
         expect(Descendent.descendents_keyword_search(@marlane.first_name)).to eq([@marlane])
       end
     end
+
+    describe ".partial_match" do
+      it "returns a partial match of the keyword" do
+        mary = Descendent.create!(first_name: "Mary", family_id: @porters.id, female: true, languages_spoken: 1)
+
+        expect(Descendent.descendents_partial_match("Ma")).to eq([@marlane, mary])
+      end
+    end
   end
 
   describe "instance methods" do

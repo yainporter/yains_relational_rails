@@ -3,7 +3,7 @@ class CreateRelationships < ActiveRecord::Migration[7.1]
     create_table :relationships do |t|
       t.integer :mom_id
       t.integer :dad_id
-      t.boolean :married, default: true
+      t.boolean :married, default: true, null: false
 
       t.timestamps
     end

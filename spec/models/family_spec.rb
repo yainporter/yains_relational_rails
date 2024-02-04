@@ -60,6 +60,14 @@ RSpec.describe "Family", type: :model do
         expect(Family.keyword_search(@porter.name)).to eq([@porter])
       end
     end
+
+    describe ".partial_match" do
+      it "returns a partial match of the keyword" do
+        potter = Family.create!(name: "Potter")
+        
+        expect(Family.partial_match("Po")).to eq([@porter, potter])
+      end
+    end
   end
 
   describe "instance methods" do

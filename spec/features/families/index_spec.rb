@@ -135,9 +135,10 @@ RSpec.describe 'Families Index Page', type: :feature do
     it "has a keyword filter" do
       expect(page).to have_field(:keyword)
       expect(page).to have_button("Search")
-
-      fill_in(:keyword, with: "Pini")
-      click_button("Search")
+      within "#keyword-search" do
+        fill_in(:keyword, with: "Pini")
+        click_button("Search")
+      end
 
       expect(page.current_path).to eq(families_path)
       expect(page).to have_no_content("Porter")
@@ -147,6 +148,29 @@ RSpec.describe 'Families Index Page', type: :feature do
       expect(page).to have_no_content("Jones")
       expect(page).to have_no_content("Saechao")
       expect(page).to have_content("Pini")
+    end
+  end
+
+  describe "Extension 3 - Search by name (partial match) " do
+    it "has a partial match filter" do
+      potter = Family.create!(name: "Potter")
+
+      expect(page).to have_field(:partial_match)
+
+      within "#partial-match" do
+        fill_in :partial_match, with: "Po"
+        click_button "Search"
+      end
+
+      expect(page.current_path).to eq(families_path)
+      expect(page).to have_no_content("Finder")
+      expect(page).to have_no_content("Lines")
+      expect(page).to have_no_content("Burnett")
+      expect(page).to have_no_content("Jones")
+      expect(page).to have_no_content("Saechao")
+      expect(page).to have_no_content("Pini")
+      expect(page).to have_content("Potter")
+      expect(page).to have_content("Porter")
     end
   end
 end
