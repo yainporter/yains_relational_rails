@@ -10,6 +10,10 @@ class Family < ApplicationRecord
     Family.select('families.*, count(descendents.id) as descendents_count').left_outer_joins(:descendents).group('families.id').order('descendents_count desc').includes(:descendents)
   end
 
+  def self.keyword_search(keyword)
+    Family.where(name: keyword)
+  end
+
   def count_descendents
     descendents.count
   end

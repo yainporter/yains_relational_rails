@@ -43,6 +43,12 @@ RSpec.describe "Descendent", type: :model do
         expect(Descendent.threshold_filter(@finder.id, 3)).to eq([@hana, @ethan, @oran])
       end
     end
+
+    describe ".descendents_keyword_search" do
+      it "returns an exact match of the keyword" do
+        expect(Descendent.descendents_keyword_search(@marlane.first_name)).to eq([@marlane])
+      end
+    end
   end
 
   describe "instance methods" do

@@ -1,4 +1,9 @@
 <h1>List of All Family Members</h1>
+<%= form_with url: descendents_path, method: :get, data: { turbo: false } do |f| %> 
+  <%= f.label :keyword, 'Search by keyword:' %>
+  <%= f.text_area :keyword %>
+  <%= f.submit "Search" %>
+<% end %>
 <ul>
   <% @descendents.each do |descendent| %>
     <div id="descendent-<%= descendent.id %>">      

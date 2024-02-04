@@ -11,7 +11,7 @@ RSpec.describe "Family", type: :model do
     @saechao = Family.create!(name: "Saechao")
 
     @marlane = Descendent.create(first_name: "Marlane", family_id: @jones.id, female: true, languages_spoken: 1)
-    @don = Descendent.create(first_name: "Don", family_id: @jones.id, female: false, languages_spoken: 2)
+    # @don = Descendent.create(first_name: "Don", family_id: @jones.id, female: false, languages_spoken: 2)
     @aaron = Descendent.create(first_name: "Aaron", family_id: @burnett.id, female: false, languages_spoken: 1)
     @stacee = Descendent.create(first_name: "Stacee", family_id: @finder.id, female: true, languages_spoken: 1)
     @amy = Descendent.create(first_name: "Amy", family_id: @finder.id, female: true, languages_spoken: 1)
@@ -24,8 +24,8 @@ RSpec.describe "Family", type: :model do
     @lee = Descendent.create(first_name: "Lee", family_id: @porter.id, female: false, languages_spoken: 2)
     @amanda = Descendent.create(first_name: "Amanda", family_id: @burnett.id, female: true, languages_spoken: 1)
     @rusty = Descendent.create(first_name: "Rusty", family_id: @burnett.id, female: false, languages_spoken: 3)
-    @yain = Descendent.create(first_name: "Yain", family_id: @burnett.id, female: true, languages_spoken: 3)
-    @allen = Descendent.create(first_name: "Allen", family_id: @lines.id, female: false)
+    # @yain = Descendent.create(first_name: "Yain", family_id: @burnett.id, female: true, languages_spoken: 3)
+    # @allen = Descendent.create(first_name: "Allen", family_id: @lines.id, female: false)
     @caroyln = Descendent.create(first_name: "Carolyn", family_id: @lines.id, female: true)
     @robert = Descendent.create(first_name: "Robert", family_id: @lines.id, female: false)
     @halee = Descendent.create(first_name: "Halee", family_id: @porter.id, female: true)
@@ -34,7 +34,7 @@ RSpec.describe "Family", type: :model do
     @hana = Descendent.create(first_name: "Hana", family_id: @finder.id, female: true)
     @ethan = Descendent.create(first_name: "Ethan", family_id: @finder.id, female: false)
     @oran = Descendent.create(first_name: "Oran", family_id: @finder.id, female: false)
-    @millie = Descendent.create(first_name: "Millie", family_id: @pini.id, female: true)
+    # @millie = Descendent.create(first_name: "Millie", family_id: @pini.id, female: true)
   end
 
   describe "class methods" do
@@ -52,6 +52,12 @@ RSpec.describe "Family", type: :model do
     describe ".sort_by_number_of_descendents" do
       it "sorts families by the number of descendents" do
         expect(Family.sort_by_number_of_descendents).to eq([@finder, @porter, @lines, @burnett, @pini, @jones, @saechao])
+      end
+    end
+
+    describe ".keyword_search" do
+      it "returns an exact match of the keyword" do
+        expect(Family.keyword_search(@porter.name)).to eq([@porter])
       end
     end
   end

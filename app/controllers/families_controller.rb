@@ -45,6 +45,8 @@ class FamiliesController < ApplicationController
   def index_filter
     if params[:sort]
       @families = Family.sort_by_number_of_descendents
+    elsif params[:keyword]
+      @families = Family.keyword_search(params[:keyword])
     else
       @families = Family.sort_by_creation
     end

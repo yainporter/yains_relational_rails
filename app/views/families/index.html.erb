@@ -1,5 +1,10 @@
 <h1>List of Families:</h1>
 <%= link_to 'Sort Families by Number of Descendents', families_path(sort: true) %>
+<%= form_with url: families_path, method: :get, data: { turbo: false } do |f| %> 
+  <%= f.label :keyword, 'Search by keyword:' %>
+  <%= f.text_field :keyword %>
+  <%= f.submit "Search" %>
+<% end %>
 <ul>
   <% @families.each do |family| %>
     <div id="family-<%= family.id %>">

@@ -100,4 +100,23 @@ RSpec.describe "Descendents Index Page", type: :feature do
       expect(page).to_not have_selector("#descendent-#{@amy.id}")
     end
   end
+
+  describe "Extension 2 - Search by name (exact match)" do
+    it "has a keyword filter" do
+      expect(page).to have_field(:keyword)
+      expect(page).to have_button("Search")
+
+      fill_in(:keyword, with: "Marlane")
+      click_button("Search")
+
+      expect(page.current_path).to eq(descendents_path)
+      expect(page).to have_no_content("Amy")
+      expect(page).to have_no_content("Dana")
+      expect(page).to have_no_content("Stacee")
+      expect(page).to have_no_content("Alissa")
+      expect(page).to have_no_content("Amanda")
+      expect(page).to have_no_content("Yain")
+      expect(page).to have_content("Marlane")
+    end
+  end
 end

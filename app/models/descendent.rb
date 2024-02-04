@@ -21,4 +21,8 @@ class Descendent < ApplicationRecord
   def self.threshold_filter(family_id, number)
     Descendent.family_descendents(family_id).limit(number)
   end
+
+  def self.descendents_keyword_search(keyword)
+    Descendent.where(first_name: keyword)
+  end
 end

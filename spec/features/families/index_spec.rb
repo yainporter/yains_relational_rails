@@ -5,7 +5,7 @@ RSpec.describe 'Families Index Page', type: :feature do
     @porter = Family.create!(name: "Porter")
     @finder = Family.create!(name: "Finder")
     @lines = Family.create!(name: "Lines")
-    @burnett = Family.create!(name: "Burnett")
+  @burnett = Family.create!(name: "Burnett")
     @pini = Family.create!(name: "Pini")
     @jones = Family.create!(name: "Jones")
     @saechao = Family.create!(name: "Saechao")
@@ -119,7 +119,6 @@ RSpec.describe 'Families Index Page', type: :feature do
 
       click_link("Sort Families by Number of Descendents")
       expect(page.current_path).to eq(families_path)
-      save_and_open_page
       families = Family.all
       families.each do |family|
         within "#family-#{family.id}" do
@@ -129,6 +128,25 @@ RSpec.describe 'Families Index Page', type: :feature do
 
       expect("Porter").to appear_before("Lines")
       expect("Lines").to appear_before("Finder")
+    end
+  end
+
+  describe "Extension 2 - Search by name (exact match)" do
+    it "has a keyword filter" do
+      expect(page).to have_field(:keyword)
+      expect(page).to have_button("Search")
+
+      fill_in(:keyword, with: "Pini")
+      click_button("Search")
+
+      expect(page.current_path).to eq(families_path)
+      expect(page).to have_no_content("Porter")
+      expect(page).to have_no_content("Finder")
+      expect(page).to have_no_content("Lines")
+      expect(page).to have_no_content("Burnett")
+      expect(page).to have_no_content("Jones")
+      expect(page).to have_no_content("Saechao")
+      expect(page).to have_content("Pini")
     end
   end
 end
