@@ -287,7 +287,7 @@ I am returned to the Parent Index Page where I no longer see that parent
   <dd>Then I only see records that are an exact match returned on the page
 </dl>
 <dl>
-  <dt>[ ] done </dt>
+  <dt>[X] done </dt>
   <dt>Extension 3: Search by name (partial match)</dt>
   <dd>As a visitor
   <dd>When I visit an index page ('/parents') or ('/child_table_name')

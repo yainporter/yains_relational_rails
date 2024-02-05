@@ -1,14 +1,14 @@
 <h1>List of Descendents</h1>
 <%= link_to 'Create New Descendent', family_descendents_new_path, data: { turbo_method: :get } %>
 <%= link_to 'Sort Descendents Alphabetically', family_descendents_path(params[:id], filter: true), data: { turbo_method: :get }  %>
-<%= form_with url: family_descendents_path, method: :get, data: { turbo: false } do |f| %> 
+<%= form_with url: family_descendents_path, method: :get, data: { turbo: false } do |f| %>
   <%= f.label :sort_by, 'Threshold' %>
   <%= f.number_field :sort_by %>
   <%= f.submit "Submit" %>
 <% end %>
 <ul>
   <% @descendents.each do |descendent| %>
-    <div>
+    <div class="descendent-<%= descendent.id %>">
       <li> First Name: <%= descendent.first_name %></li>
       <li> Last Name: <%= descendent.last_name %></li>
       <li> Family ID: <%= descendent.family_id %></li>

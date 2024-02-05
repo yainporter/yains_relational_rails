@@ -173,4 +173,15 @@ RSpec.describe 'Families Index Page', type: :feature do
       expect(page).to have_content("Porter")
     end
   end
+
+  describe "Extra functionality 1 - Link to Show Page" do
+    it "has a link to each Family's show page" do
+      within "#family-#{@porter.id}" do
+        expect(page).to have_link("Show Page", href: families_show_path(@porter))
+
+        click_link("Show Page")
+        expect(page.current_path).to eq(families_show_path(@porter))
+      end
+    end
+  end
 end

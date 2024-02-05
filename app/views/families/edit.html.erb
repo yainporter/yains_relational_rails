@@ -1,5 +1,5 @@
 <%= form_with url: families_update_path, method: :patch, data: { turbo: false } do |f| %> 
   <%= f.label :name, "Edit #{@family.name} Name" %>
-  <%= f.text_area :name %>
+  <%= f.text_field :name %>
   <%= f.submit "Update Family" %>
 <% end %>

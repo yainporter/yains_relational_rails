@@ -67,7 +67,7 @@ RSpec.describe "Descendents Index Page", type: :feature do
 
   describe "User Story 18 - Descendent Update from Descendent Index" do
     it "has a link next to every Descendent to update info" do
-      within "#descendent-#{@amy.id}" do
+      within ".descendent-#{@amy.id}" do
         expect(page).to have_content("Amy")
         expect(page).to have_link("Edit", href: descendents_edit_path(@amy.id))
 
@@ -82,7 +82,7 @@ RSpec.describe "Descendents Index Page", type: :feature do
     it "has a link next to every Family to delete its record" do
       descendents = Descendent.where(female: true)
       descendents.each do |descendent|
-        within "#descendent-#{descendent.id}" do
+        within ".descendent-#{descendent.id}" do
           expect(page).to have_link("Delete", href: descendents_delete_path(descendent))
 
           if @amy.id

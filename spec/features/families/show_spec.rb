@@ -31,7 +31,6 @@ RSpec.describe "Family Show Page", type: :feature do
   describe "User Story 7 - Parent Child Count" do
     it "displays the number of children associated with the parent" do
 
-
       expect(page).to have_content("Number of Porter descendents: 4")
 
       visit families_show_path(@lines.id)

@@ -25,6 +25,6 @@ class Family < ApplicationRecord
   end
 
   def count_descendents
-    descendents.size
+    self.descendents.size
   end
 end

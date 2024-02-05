@@ -3,4 +3,4 @@
 <%= link_to 'Edit Family Information', families_edit_path(@family.id), data: { turbo_method: :get } %>
 <%= link_to 'Delete Family', families_delete_path(@family.id), data: { turbo_method: :delete } %>
 <p>Family ID: <%= @family.id %></p>
-<p>Number of <%= @family.name %> descendents: <%= @family.descendents.count %></p>
+<p>Number of <%= @family.name %> descendents: <%= @family.count_descendents %></p>
