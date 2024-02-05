@@ -1,4 +1,6 @@
 <h1><%= @descendent.first_name %></h1>
+<%= link_to 'Edit Descendent', descendents_edit_path(@descendent), data: { turbo_method: :get} %>
+<%= link_to 'Delete Descendent', descendents_delete_path(@descendent), data: { turbo_method: :delete } %>
 <ul>
   <li> Last Name: <%= @descendent.last_name %></li>
   <li> Family ID: <%= @descendent.family_id %></li>
@@ -6,5 +8,4 @@
   <li> Languages Spoken: <%= @descendent.languages_spoken %></li>
 </ul>
 
-<%= link_to 'Edit Descendent', descendents_edit_path(@descendent) %>
-<%= link_to 'Delete Descendent', descendents_delete_path(@descendent), method: :delete %>
+

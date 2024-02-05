@@ -1,5 +1,6 @@
 <h1>List of Families:</h1>
-<%= link_to 'Sort Families by Number of Descendents', families_path(sort: true) %>
+<%= link_to 'Sort Families by Number of Descendents', families_path(sort: true), data: { turbo_method: :get } %>
+<%= link_to 'Add Family', families_new_path, data: { turbo_method: :get } %>
 <div class="keyword-search">
   <%= form_with url: families_path, method: :get, data: { turbo: false } do |f| %>
     <%= f.label :keyword, 'Search by keyword:' %>
@@ -10,7 +11,7 @@
 <div class="partial-match">
   <%= form_with url: families_path, method: :get, data: { turbo: false } do |f| %>
     <%= f.label :partial_match, 'Search by partial match:' %>
-    <%= f.text_area :partial_match %>
+    <%= f.text_field :partial_match %>
     <%= f.submit "Search" %>
   <% end %>
 </div>
@@ -26,4 +27,3 @@
     <br>
   <% end %>
 </ul>
-<%= link_to 'Add Family', families_new_path %>

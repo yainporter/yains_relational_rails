@@ -85,7 +85,7 @@ gem "shoulda-matchers", "~> 5.0"
 
 <dl>
   <dt>User Story 7, Parent Child Count</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit a parent's show page
   <dd>I see a count of the number of children associated with this parent
@@ -94,7 +94,7 @@ gem "shoulda-matchers", "~> 5.0"
 ### Usability
 <dl>
   <dt>User Story 8, Child Index Link</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit any page on the site
   <dd>Then I see a link at the top of the page that takes me to the Child Index
@@ -102,7 +102,7 @@ gem "shoulda-matchers", "~> 5.0"
 
 <dl>
   <dt>User Story 9, Parent Index Link</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit any page on the site
   <dd>Then I see a link at the top of the page that takes me to the Parent Index
@@ -110,7 +110,7 @@ gem "shoulda-matchers", "~> 5.0"
 
 <dl>
   <dt>User Story 10, Parent Child Index Link</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit a parent show page ('/parents/:id')
   <dd>Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
@@ -120,7 +120,7 @@ gem "shoulda-matchers", "~> 5.0"
 ### CRUD
 <dl>
   <dt>User Story 11, Parent Creation </dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the Parent Index page
   <dd>Then I see a link to create a new Parent record, "New Parent"
@@ -134,7 +134,7 @@ gem "shoulda-matchers", "~> 5.0"
 </dl>
 <dl>
   <dt>User Story 12, Parent Update </dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit a parent show page
   <dd>Then I see a link to update the parent "Update Parent"
@@ -148,7 +148,7 @@ the parent's info is updated,
 </dl>
 <dl>
   <dt>User Story 13, Parent Child Creation</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit a Parent Children Index page
   <dd>Then I see a link to add a new adoptable child for that parent "Create Child"
@@ -163,7 +163,7 @@ the parent's info is updated,
 </dl>
 <dl>
   <dt>User Story 14, Child Update </dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit a Child Show page
   <dd>Then I see a link to update that Child "Update Child"
@@ -176,14 +176,14 @@ the parent's info is updated,
 </dl>
 <dl>
   <dt>User Story 15, Child Index only shows `true` Records</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the child index
   <dd>Then I only see records where the boolean column is `true`
 </dl>
 <dl>
   <dt>User Story 16, Sort Parent's Children in Alphabetical Order by name </dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the Parent's children Index Page
   <dd>Then I see a link to sort children in alphabetical order
@@ -194,7 +194,7 @@ the parent's info is updated,
 ### Usability
 <dl>
   <dt>User Story 17, Parent Update From Parent Index Page</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the parent index page
   <dd>Next to every parent, I see a link to edit that parent's info
@@ -203,7 +203,7 @@ the parent's info is updated,
 </dl>
 <dl>
   <dt>User Story 18, Child Update From Childs Index Page </dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the `child_table_name` index page or a parent `child_table_name` index page
   <dd>Next to every child, I see a link to edit that child's info
@@ -215,7 +215,7 @@ the parent's info is updated,
 ### CRUD
 <dl>
   <dt>User Story 19, Parent Delete</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit a parent show page
   <dd>Then I see a link to delete the parent
@@ -226,7 +226,7 @@ the parent's info is updated,
 </dl>
 <dl>
   <dt>User Story 20, Child Delete</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit a child show page
   <dd>Then I see a link to delete the child "Delete Child"
@@ -239,7 +239,7 @@ the parent's info is updated,
 ### ActiveRecord
 <dl>
   <dt>User Story 21, Display Records Over a Given Threshold</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the Parent's children Index Page
   <dd>I see a form that allows me to input a number value
@@ -250,7 +250,7 @@ the parent's info is updated,
 ### Usability
 <dl>
   <dt>User Story 22, Parent Delete From Parent Index Page</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the parent index page
   <dd>Next to every parent, I see a link to delete that parent
@@ -259,7 +259,7 @@ I am returned to the Parent Index Page where I no longer see that parent
 </dl>
 <dl>
   <dt>User Story 23, Child Delete From Childs Index Page</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the `child_table_name` index page or a parent `child_table_name` index page
   <dd>Next to every child, I see a link to delete that child
@@ -270,7 +270,7 @@ I am returned to the Parent Index Page where I no longer see that parent
 ### Extensions
 <dl>
   <dt>Extension 1: Sort Parents by Number of Children</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit the Parents Index Page
   <dd>Then I see a link to sort parents by the number of `child_table_name` they have
@@ -279,7 +279,7 @@ I am returned to the Parent Index Page where I no longer see that parent
 </dl>
 <dl>
   <dt>Extension 2: Search by name (exact match)</dt>
-  <dt>[] done
+  <dt>[X] done
   <dd>As a visitor
   <dd>When I visit an index page ('/parents') or ('/child_table_name')
   <dd>Then I see a text box to filter results by keyword

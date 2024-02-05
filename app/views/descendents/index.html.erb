@@ -2,14 +2,14 @@
 <div class="keyword-search">
   <%= form_with url: descendents_path, method: :get, data: { turbo: false } do |f| %>
     <%= f.label :keyword, 'Search by keyword:' %>
-    <%= f.text_area :keyword %>
+    <%= f.text_field :keyword %>
     <%= f.submit "Search" %>
   <% end %>
 </div>
 <div class="partial-match">
   <%= form_with url: descendents_path, method: :get, data: { turbo: false } do |f| %>
     <%= f.label :partial_match, 'Search by partial match:' %>
-    <%= f.text_area :partial_match %>
+    <%= f.text_field :partial_match %>
     <%= f.submit "Search" %>
   <% end %>
 </div>
@@ -21,8 +21,8 @@
       <li> Family ID: <%= descendent.family_id %></li>
       <li> Female: <%= descendent.female %></li>
       <li> Languages Spoken: <%= descendent.languages_spoken %></li>
-      <li><%= link_to 'Edit', descendents_edit_path(descendent), data: { turbo: :get } %></li>
-      <li><%= link_to 'Delete', descendents_delete_path(descendent), method: :delete %></li>
+      <li><%= link_to 'Edit', descendents_edit_path(descendent), data: { turbo_method: :get } %></li>
+      <li><%= link_to 'Delete', descendents_delete_path(descendent), data: { turbo_method: :delete} %></li>
       <br>
     </div>
   <% end %>
