@@ -1,4 +1,4 @@
-class Families::DescendentsController < ApplicationController
+class Family::DescendentsController < ApplicationController
   def index
     @descendents = index_filter(params)
   end

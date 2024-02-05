@@ -1,6 +1,16 @@
 require "rails_helper"
 
-RSpec.describe "Family", type: :model do
+RSpec.describe Family, type: :model do
+  describe "associations" do
+    it { should have_many(:descendents) }
+    # it { should have_many(:relationships).through(:descendents).source(:relationship_as_dad) }
+    # How do I write the validation for this association?
+  end
+
+  describe "validations" do
+    it { should validate_presence_of(:name)}
+  end
+
   before(:each) do
     @porter = Family.create!(name: "Porter")
     @finder = Family.create!(name: "Finders")
@@ -64,7 +74,7 @@ RSpec.describe "Family", type: :model do
     describe ".partial_match" do
       it "returns a partial match of the keyword" do
         potter = Family.create!(name: "Potter")
-        
+
         expect(Family.partial_match("Po")).to eq([@porter, potter])
       end
     end

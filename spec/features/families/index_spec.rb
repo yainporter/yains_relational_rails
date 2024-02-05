@@ -135,7 +135,7 @@ RSpec.describe 'Families Index Page', type: :feature do
     it "has a keyword filter" do
       expect(page).to have_field(:keyword)
       expect(page).to have_button("Search")
-      within "#keyword-search" do
+      within ".keyword-search" do
         fill_in(:keyword, with: "Pini")
         click_button("Search")
       end
@@ -157,7 +157,7 @@ RSpec.describe 'Families Index Page', type: :feature do
 
       expect(page).to have_field(:partial_match)
 
-      within "#partial-match" do
+      within ".partial-match" do
         fill_in :partial_match, with: "Po"
         click_button "Search"
       end

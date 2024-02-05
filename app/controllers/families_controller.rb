@@ -25,7 +25,6 @@ class FamiliesController < ApplicationController
   def update
     family = Family.find(params[:id])
     family.update(family_params)
-
     redirect_to families_show_path(params[:id])
   end
 

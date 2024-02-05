@@ -44,12 +44,6 @@ RSpec.describe "Descendents Index Page", type: :feature do
       expect(page).to have_content("Family ID: #{@porters.id}")
       expect(page).to have_content("Female: true")
       expect(page).to have_content("Languages Spoken: 1")
-
-      # expect(page).to have_content("First Name: Don")
-      # expect(page).to have_content("Last Name: Porter")
-      # expect(page).to have_content("Family ID: #{@porters.id}")
-      # expect(page).to have_content("Female: false")
-      # expect(page).to have_content("Languages Spoken: 2")
     end
   end
 
@@ -106,7 +100,7 @@ RSpec.describe "Descendents Index Page", type: :feature do
       expect(page).to have_field(:keyword)
       expect(page).to have_button("Search")
 
-      within "#descendents-keyword" do
+      within ".keyword-search" do
         fill_in(:keyword, with: "Marlane")
         click_button("Search")
       end
@@ -128,7 +122,7 @@ RSpec.describe "Descendents Index Page", type: :feature do
 
       expect(page).to have_field(:partial_match)
 
-      within "#descendents-partial-match" do
+      within ".partial-match" do
         fill_in :partial_match, with: "Ma"
         click_button "Search"
       end

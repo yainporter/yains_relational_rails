@@ -1,6 +1,19 @@
 require "rails_helper"
 
-RSpec.describe "Descendent", type: :model do
+RSpec.describe Descendent, type: :model do
+  describe "associations" do
+    it { should belong_to(:family)}
+    it { should have_one(:relationship_as_dad) }
+    it { should have_one(:relationship_as_mom) }
+  end
+
+  describe "validations" do
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:family_id) }
+    it { should validate_presence_of(:languages_spoken) }
+    # How do I validate the presence of :female?
+  end
+
   before(:each) do
     @porters = Family.create!(name: "Porter")
     @finder = Family.create!(name: "Finders")

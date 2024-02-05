@@ -1,12 +1,12 @@
 <h1>List of All Family Members</h1>
-<div id="descendents-keyword">
+<div class="keyword-search">
   <%= form_with url: descendents_path, method: :get, data: { turbo: false } do |f| %>
     <%= f.label :keyword, 'Search by keyword:' %>
     <%= f.text_area :keyword %>
     <%= f.submit "Search" %>
   <% end %>
 </div>
-<div id="descendents-partial-match">
+<div class="partial-match">
   <%= form_with url: descendents_path, method: :get, data: { turbo: false } do |f| %>
     <%= f.label :partial_match, 'Search by partial match:' %>
     <%= f.text_area :partial_match %>
@@ -21,7 +21,7 @@
       <li> Family ID: <%= descendent.family_id %></li>
       <li> Female: <%= descendent.female %></li>
       <li> Languages Spoken: <%= descendent.languages_spoken %></li>
-      <li><%= link_to 'Edit', descendents_edit_path(descendent) %></li>
+      <li><%= link_to 'Edit', descendents_edit_path(descendent), data: { turbo: :get } %></li>
       <li><%= link_to 'Delete', descendents_delete_path(descendent), method: :delete %></li>
       <br>
     </div>

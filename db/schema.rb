@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_213021) do
     t.string "first_name"
     t.bigint "family_id", null: false
     t.bigint "parents_id"
-    t.boolean "female"
+    t.boolean "female", default: false
     t.integer "languages_spoken", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_31_213021) do
   create_table "relationships", force: :cascade do |t|
     t.integer "mom_id"
     t.integer "dad_id"
-    t.boolean "married", default: true
+    t.boolean "married", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,6 +3,10 @@ class Descendent < ApplicationRecord
   has_one :relationship_as_mom, class_name: "Relationship", foreign_key: "mom_id", dependent: :destroy
   has_one :relationship_as_dad, class_name: "Relationship", foreign_key: "dad_id", dependent: :destroy
 
+  validates :first_name, :family_id, :languages_spoken, presence: true
+  validates :family_id, :languages_spoken, numericality: true
+  validates :female, inclusion: [true, false]
+
   def last_name
     family.name
   end
