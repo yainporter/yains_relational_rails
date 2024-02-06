@@ -8,8 +8,8 @@ class Family::DescendentsController < ApplicationController
   def index_filter(params)
     if params[:filter]
       Descendent.sort_alphabetically(params[:id])
-    elsif params[:sort_by]
-      Descendent.threshold_filter(params[:id], params[:sort_by])
+    elsif params[:limit_by]
+      Descendent.threshold_filter(params[:id], params[:limit_by])
     elsif params[:sort_by_languages]
       Descendent.number_of_languages(params[:id], params[:sort_by_languages])
     else

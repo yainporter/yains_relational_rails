@@ -105,8 +105,8 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
         expect(page).to have_content(descendent.first_name)
       end
 
-      expect(page).to have_field(:sort_by)
-      expect(page).to have_button("Submit")
+      expect(page).to have_field(:limit_by)
+      expect(page).to have_button("Limit")
 
       fill_in("Limit Descendents", with: 2)
       click_button("Limit")

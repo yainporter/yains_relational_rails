@@ -7,8 +7,8 @@
   <%= f.submit "Submit" %>
 <% end %>
 <%= form_with url: family_descendents_path, method: :get, data: { turbo: false } do |f| %>
-  <%= f.label :sort_by, 'Limit Descendents' %>
-  <%= f.number_field :sort_by %>
+  <%= f.label :limit_by, 'Limit Descendents' %>
+  <%= f.number_field :limit_by %>
   <%= f.submit "Limit" %>
 <% end %>
 <ul>
