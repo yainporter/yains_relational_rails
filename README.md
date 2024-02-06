@@ -10,10 +10,10 @@ Write model and feature tests that fully cover data logic and user behavior.
 
 ## Requirements
 
-Must use Rails 7.0.x, Ruby 3.2.2
-Must use PostgreSQL
-Must “handroll” all routes (no use of resources syntax)
-Use of scope syntax is not permitted on this project
+Must use Rails 7.0.x, Ruby 3.2.2\
+Must use PostgreSQL\
+Must “handroll” all routes (no use of resources syntax)\
+Use of scope syntax is not permitted on this project\
 Use of scaffolding syntax is not permitted on this project
 
 ## Gems used:
