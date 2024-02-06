@@ -22,6 +22,7 @@
       <li> Female: <%= descendent.female %></li>
       <li> Languages Spoken: <%= descendent.languages_spoken %></li>
       <li><%= link_to 'Edit', descendents_edit_path(descendent), data: { turbo_method: :get } %></li>
+      <li><%= link_to 'Show Page', descendents_show_path(descendent), data: { turbo_method: :get } %></li>
       <li><%= link_to 'Delete', descendents_delete_path(descendent), data: { turbo_method: :delete} %></li>
       <br>
     </div>

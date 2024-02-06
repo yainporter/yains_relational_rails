@@ -17,6 +17,10 @@
         <li><%= link_to "Families Index", families_path %></li>
       </ul>
     </nav>
+    <% flash.each do |type, message| %>
+      <p><%= message %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>
+

@@ -79,9 +79,9 @@ RSpec.describe 'Families Index Page', type: :feature do
 
   describe "User Story 11 - Family Creation" do
     it "has a link to create a new family" do
-      expect(page).to have_link("Add Family", href: families_new_path)
+      expect(page).to have_link("Add New Family", href: families_new_path)
 
-      click_link("Add Family")
+      click_link("Add New Family")
 
       expect(page.current_path).to eq(families_new_path)
     end
@@ -174,7 +174,7 @@ RSpec.describe 'Families Index Page', type: :feature do
     end
   end
 
-  describe "Extra functionality 1 - Link to Show Page" do
+  describe "Extra Functionality 1 - Link to Show Page" do
     it "has a link to each Family's show page" do
       within "#family-#{@porter.id}" do
         expect(page).to have_link("Show Page", href: families_show_path(@porter))

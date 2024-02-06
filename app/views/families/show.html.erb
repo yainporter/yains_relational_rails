@@ -1,6 +1,9 @@
 <h1><%= @family.name %> Family</h1>
-<%= link_to 'Descendents', family_descendents_path(@family.id), data: { turbo_method: :get } %>
-<%= link_to 'Edit Family Information', families_edit_path(@family.id), data: { turbo_method: :get } %>
-<%= link_to 'Delete Family', families_delete_path(@family.id), data: { turbo_method: :delete } %>
+<ul>
+  <li><%= link_to 'Edit Family Information', families_edit_path(@family.id), data: { turbo_method: :get } %></li>
+  <li><%= link_to "#{@family.name} Descendents", family_descendents_path(@family.id), data: { turbo_method: :get } %></li>
+  <li><%= link_to 'Delete Family', families_delete_path(@family.id), data: { turbo_method: :delete } %></li>
+</ul>
+
 <p>Family ID: <%= @family.id %></p>
 <p>Number of <%= @family.name %> descendents: <%= @family.count_descendents %></p>

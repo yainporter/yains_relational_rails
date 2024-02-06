@@ -34,4 +34,18 @@ RSpec.describe "Families New Page", type: :feature do
       expect(page).to have_content("Taylor")
     end
   end
+
+  describe "Extra Functionality 2 - Flash" do
+    it "will give a flash message when all fields are not filled out" do
+      click_button "Create Family"
+
+      expect(page).to have_content("Family not created: Please fill out Family Name")
+    end
+
+    it "will render :new on families_create_path" do
+      click_button "Create Family"
+
+      expect(page.current_path).to eq(families_create_path)
+    end
+  end
 end

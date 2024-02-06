@@ -13,19 +13,26 @@ class FamiliesController < ApplicationController
 
   def create
     family = Family.create(family_params)
-    family.save
-
-    redirect_to families_path
+    if family.save
+      redirect_to families_path
+    else
+      flash[:notice] = "Family not created: Please fill out Family Name"
+      render :new
+    end
   end
 
   def edit
-    @family = Family.find(params[:id])
+
   end
 
   def update
     family = Family.find(params[:id])
-    family.update(family_params)
-    redirect_to families_show_path(params[:id])
+    if family.update(family_params)
+      redirect_to families_show_path(params[:id])
+    else
+      flash[:notice] = "Family not updated: Please fill out Family Name"
+      render :edit
+    end
   end
 
   def destroy

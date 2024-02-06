@@ -138,4 +138,15 @@ RSpec.describe "Descendents Index Page", type: :feature do
       expect(page).to have_content("Amanda")
     end
   end
+
+  describe "Extra Functionality 3 - Link to Show Page" do
+    it "has a link next to each Descendent for their show page" do
+      descendents = Descendent.where(female: true)
+      descendents.each do |descendent|
+        within ".descendent-#{descendent.id}" do
+          expect(page).to have_link("Show Page", href: descendents_show_path(descendent))
+        end
+      end
+    end
+  end
 end

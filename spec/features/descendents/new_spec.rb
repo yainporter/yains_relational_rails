@@ -41,4 +41,18 @@ RSpec.describe "Family Descendents New Page", type: :feature do
       expect(page).to have_content("Languages Spoken: 3")
     end
   end
+
+  describe "Extra Functionality 2 - Flash" do
+    it "will give a flash message when all fields are not filled out" do
+      click_button "Create Descendent"
+
+      expect(page).to have_content("Descendent not created: Please fill out all fields")
+    end
+
+    it "will render :new on family_descendents_create_path" do
+      click_button "Create Descendent"
+
+      expect(page.current_path).to eq(family_descendents_create_path(@porters))
+    end
+  end
 end

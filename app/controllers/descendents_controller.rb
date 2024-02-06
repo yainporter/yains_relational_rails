@@ -9,9 +9,12 @@ class DescendentsController < ApplicationController
 
   def create
     descendent = Descendent.new(descendent_params)
-    descendent.save
-
-    redirect_to family_descendents_path(params[:id])
+    if descendent.save
+      redirect_to family_descendents_path(params[:id])
+    else
+      flash[:notice] = "Descendent not created: Please fill out all fields"
+      render :new
+    end
   end
 
   def show
@@ -23,10 +26,13 @@ class DescendentsController < ApplicationController
   end
 
   def update
-    descendent = Descendent.find(params[:id])
-    descendent.update(descendent_params)
-
-    redirect_to descendents_show_path(descendent)
+    @descendent = Descendent.find(params[:id])
+    if @descendent.update(descendent_params)
+      redirect_to descendents_show_path(@descendent)
+    else
+      flash[:notice] = "Descendent not updated: Please fill out a field to update"
+      render :edit
+    end
   end
 
   def destroy

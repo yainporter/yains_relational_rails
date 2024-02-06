@@ -33,4 +33,18 @@ RSpec.describe "Descendent Edit Page", type: :feature do
       expect(page).to have_content("Languages Spoken: 2")
     end
   end
+
+  describe "Extra Functionality 2 - Flash" do
+    it "will give a flash message when no fields are filled out" do
+      click_button "Update Descendent"
+
+      expect(page).to have_content("Descendent not updated: Please fill out a field to update")
+    end
+
+    it "will render :edit on families_update_path" do
+      click_button "Update Descendent"
+
+      expect(page.current_path).to eq(descendents_update_path(@marlane))
+    end
+  end
 end
