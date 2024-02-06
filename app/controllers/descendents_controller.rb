@@ -3,6 +3,17 @@ class DescendentsController < ApplicationController
     @descendents = index_filter
   end
 
+  def new
+
+  end
+
+  def create
+    descendent = Descendent.new(descendent_params)
+    descendent.save
+
+    redirect_to family_descendents_path(params[:id])
+  end
+
   def show
     @descendent = Descendent.find(params[:id])
   end
