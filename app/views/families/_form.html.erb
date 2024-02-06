@@ -1,0 +1,9 @@
+<%= form_with url: path, method: method, data: { turbo: false } do |f| %>
+  <%= f.label :name, family_name %>
+  <%= f.text_field :name %>
+  <%= f.submit button_text %>
+<% end %>
+
+
+
+

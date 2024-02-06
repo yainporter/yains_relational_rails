@@ -1,5 +1,7 @@
-<%= form_with url: families_create_path, method: :post, data: { turbo: false } do |f| %> 
-  <%= f.label :name, 'Family Name:' %>
-  <%= f.text_field :name %>
-  <%= f.submit "Create Family" %>
-<% end %>
+<h1>Create a New Family</h1>
+<%= render partial: "form", locals: {
+                                      path: families_create_path,
+                                      method: :post,
+                                      family_name: "Family Name:",
+                                      button_text: "Create Family"
+} %>

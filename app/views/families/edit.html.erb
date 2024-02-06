@@ -1,5 +1,7 @@
-<%= form_with url: families_update_path, method: :patch, data: { turbo: false } do |f| %> 
-  <%= f.label :name, "Edit #{@family.name} Name" %>
-  <%= f.text_field :name %>
-  <%= f.submit "Update Family" %>
-<% end %>
+<h1>Edit Family Name</h1>
+<%= render partial: "form", locals: {
+                                      path: families_update_path,
+                                      method: :patch,
+                                      family_name: "Edit #{@family.name} Name",
+                                      button_text: "Update Family"
+} %>
