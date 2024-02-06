@@ -99,7 +99,7 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
   end
 
   describe "Extra Feature - [OLD: User Story 21] - Display Records Over a Given Threshold" do
-    it "filters Descendents by number of languages" do
+    it "filters Descendents by limit" do
 
       @porters.descendents.each do |descendent|
         expect(page).to have_content(descendent.first_name)
