@@ -70,6 +70,14 @@ RSpec.describe Descendent, type: :model do
         expect(Descendent.descendents_partial_match("Ma")).to eq([@marlane, mary])
       end
     end
+
+    describe ".number_of_languages" do
+      it "returns Descendents who speak a certain number of languages" do
+        rusty = Descendent.create!(first_name: "Rusty", family_id: @porters.id, female: false, languages_spoken: 3)
+
+        expect(Descendent.number_of_languages(@porters.id, 2)).to eq([@don, rusty])
+      end
+    end
   end
 
   describe "instance methods" do

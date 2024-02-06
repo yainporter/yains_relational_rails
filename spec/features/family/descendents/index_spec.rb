@@ -79,7 +79,27 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
   end
 
   describe "User Story 21 - Display Records Over a Given Threshold" do
-    it "has a form that returns a threshold" do
+    it "filters Descendents by number of languages" do
+
+      @porters.descendents.each do |descendent|
+        expect(page).to have_content(descendent.first_name)
+      end
+
+      expect(page).to have_field(:sort_by_languages)
+      expect(page).to have_button("Submit")
+
+      fill_in("Sort by Languages Spoken:", with: 2)
+      click_button("Submit")
+
+      expect(page.current_path).to eq(family_descendents_path(@porters.id))
+
+      expect(page).to have_content("Rusty")
+      expect(page).to have_content("Don")
+    end
+  end
+
+  describe "Extra Feature - [OLD: User Story 21] - Display Records Over a Given Threshold" do
+    it "filters Descendents by number of languages" do
 
       @porters.descendents.each do |descendent|
         expect(page).to have_content(descendent.first_name)
@@ -88,8 +108,8 @@ RSpec.describe "Family Descendents Index Page", type: :feature do
       expect(page).to have_field(:sort_by)
       expect(page).to have_button("Submit")
 
-      fill_in("Threshold", with: 2)
-      click_button("Submit")
+      fill_in("Limit Descendents", with: 2)
+      click_button("Limit")
 
       expect(page.current_path).to eq(family_descendents_path(@porters.id))
 

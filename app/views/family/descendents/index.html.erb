@@ -2,9 +2,14 @@
 <%= link_to 'Create New Descendent', family_descendents_new_path, data: { turbo_method: :get } %>
 <%= link_to 'Sort Descendents Alphabetically', family_descendents_path(params[:id], filter: true), data: { turbo_method: :get }  %>
 <%= form_with url: family_descendents_path, method: :get, data: { turbo: false } do |f| %>
-  <%= f.label :sort_by, 'Threshold' %>
-  <%= f.number_field :sort_by %>
+  <%= f.label :sort_by_languages, 'Sort by Languages Spoken:' %>
+  <%= f.number_field :sort_by_languages %>
   <%= f.submit "Submit" %>
+<% end %>
+<%= form_with url: family_descendents_path, method: :get, data: { turbo: false } do |f| %>
+  <%= f.label :sort_by, 'Limit Descendents' %>
+  <%= f.number_field :sort_by %>
+  <%= f.submit "Limit" %>
 <% end %>
 <ul>
   <% @descendents.each do |descendent| %>

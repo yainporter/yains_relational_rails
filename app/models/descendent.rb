@@ -26,6 +26,10 @@ class Descendent < ApplicationRecord
     Descendent.family_descendents(family_id).limit(number)
   end
 
+  def self.number_of_languages(family_id, number)
+    Descendent.where("family_id = ? AND languages_spoken >= ?", family_id, number)
+  end
+
   def self.descendents_keyword_search(keyword)
     Descendent.where(first_name: keyword)
   end
