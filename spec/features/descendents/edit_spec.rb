@@ -39,6 +39,13 @@ RSpec.describe "Descendent Edit Page", type: :feature do
       click_button "Update Descendent"
 
       expect(page).to have_content("Descendent not updated: Please fill out all fields to update")
+
+      fill_in "First Name:", with: "Mary"
+      fill_in "Family ID:", with: @schnepf.id
+      fill_in "Languages Spoken:", with: 2
+      click_button "Update Descendent"
+
+      expect(page).to have_content("Descendent not updated: Please fill out all fields to update")
     end
 
     it "will render :edit on families_update_path" do
