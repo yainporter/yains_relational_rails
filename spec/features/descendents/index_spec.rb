@@ -149,4 +149,18 @@ RSpec.describe "Descendents Index Page", type: :feature do
       end
     end
   end
+
+  describe "Extra Functionality 4 - Turn Off Boolean Filter" do
+    it "has a link to turn off the boolean filter" do
+      expect(page).to have_link("Turn Off Boolean Filter")
+
+      click_link("Turn Off Boolean Filter")
+
+      @porters.descendents.each do |descendent|
+        within ".descendent-#{descendent.id}" do
+          expect(page).to have_content(descendent.first_name)
+        end
+      end
+    end
+  end
 end

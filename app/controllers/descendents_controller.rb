@@ -30,7 +30,7 @@ class DescendentsController < ApplicationController
     if @descendent.update(descendent_params)
       redirect_to descendents_show_path(@descendent)
     else
-      flash[:notice] = "Descendent not updated: Please fill out a field to update"
+      flash[:notice] = "Descendent not updated: Please fill out all fields to update"
       render :edit
     end
   end
@@ -57,6 +57,8 @@ class DescendentsController < ApplicationController
       @descendents = Descendent.descendents_keyword_search(params[:keyword])
     elsif params[:partial_match]
       @descendents = Descendent.descendents_partial_match(params[:partial_match])
+    elsif params[:filter]
+      @descendents = Descendent.all
     else
       @descendents = Descendent.true_records
     end

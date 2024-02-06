@@ -35,10 +35,10 @@ RSpec.describe "Descendent Edit Page", type: :feature do
   end
 
   describe "Extra Functionality 2 - Flash" do
-    it "will give a flash message when no fields are filled out" do
+    it "will give a flash message when all fields are not filled out" do
       click_button "Update Descendent"
 
-      expect(page).to have_content("Descendent not updated: Please fill out a field to update")
+      expect(page).to have_content("Descendent not updated: Please fill out all fields to update")
     end
 
     it "will render :edit on families_update_path" do
