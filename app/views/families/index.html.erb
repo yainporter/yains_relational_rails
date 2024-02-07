@@ -21,7 +21,7 @@
 <ul>
   <% @families.each do |family| %>
     <div id="family-<%= family.id %>">
-      <li> <%= family.name %> [<%= link_to 'Edit', families_edit_path(family.id) %>] [<%= link_to 'Delete', families_delete_path(family), method: :delete %>] [<%= link_to 'Show Page', families_show_path(family.id), data: { turbo: :get } %>] </li>
+      <li> <%= family.name %> [<%= link_to 'Edit', families_edit_path(family.id) %>] [<%= link_to 'Delete', families_delete_path(family), data: { turbo_method: :delete } %>] [<%= link_to 'Show Page', families_show_path(family), data: { turbo_method: :get } %>] </li>
       <% if params[:sort] %>
         <li>Number of Descendents: <%= family.count_descendents %></li>
       <% end %>
