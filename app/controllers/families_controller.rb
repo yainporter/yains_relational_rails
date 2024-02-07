@@ -36,7 +36,6 @@ class FamiliesController < ApplicationController
   end
 
   def destroy
-    require 'pry'; binding.pry
     family = Family.find(params[:id])
     family.destroy
 

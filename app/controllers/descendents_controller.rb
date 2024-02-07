@@ -12,7 +12,6 @@ class DescendentsController < ApplicationController
     if descendent.save
       redirect_to family_descendents_path(params[:id])
     else
-      require 'pry'; binding.pry
       flash[:notice] = "Descendent not created: Please fill out all fields"
       render :new
     end
