@@ -78,6 +78,16 @@ RSpec.describe Descendent, type: :model do
         expect(Descendent.number_of_languages(@porters.id, 2)).to eq([@don, rusty])
       end
     end
+
+    describe ".create_descendent" do
+      it "creates a Descendent from a Family" do
+        params = Hash.new(first_name: "John", female: false, languages_spoken: 5)
+        john = Descendent.create_descendent(@pini.id, params)
+
+        expect(john).to be_a Descendent
+        expect(john.family_id).to eq(@pini.id)
+      end
+    end
   end
 
   describe "instance methods" do

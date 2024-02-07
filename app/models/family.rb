@@ -24,6 +24,7 @@ class Family < ApplicationRecord
     Family.where("name ILIKE ?", "%#{keyword}%")
   end
 
+
   def count_descendents
     self.descendents.size
   end

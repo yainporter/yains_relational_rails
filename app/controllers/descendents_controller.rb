@@ -4,11 +4,11 @@ class DescendentsController < ApplicationController
   end
 
   def new
-    
+
   end
 
   def create
-    descendent = Descendent.new(descendent_params)
+    descendent = Descendent.create_descendent(params[:id], descendent_params)
     if descendent.save
       redirect_to family_descendents_path(params[:id])
     else
@@ -48,7 +48,6 @@ class DescendentsController < ApplicationController
   def descendent_params
     params.permit(:first_name,
                   :family_id,
-                  :parents_id,
                   :female,
                   :languages_spoken)
   end

@@ -37,4 +37,9 @@ class Descendent < ApplicationRecord
   def self.descendents_partial_match(keyword)
     Descendent.where("first_name ILIKE ?", "%#{keyword}%")
   end
+
+  def self.create_descendent(family_id, params)
+    family = Family.find(family_id)
+    family.descendents.create(params)
+  end
 end
