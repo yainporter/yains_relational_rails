@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  get "/", to: "welcome#index"
+
   get "/families", to: "families#index", as: :families
   get "/families/new", to: "families#new", as: :families_new
   post "/families", to: "families#create", as: :families_create
