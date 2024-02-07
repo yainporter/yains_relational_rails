@@ -53,5 +53,16 @@ RSpec.describe "Descendent Edit Page", type: :feature do
 
       expect(page.current_path).to eq(descendents_update_path(@marlane))
     end
+
+    it "will not change the name of the Descendent on the page upon failure" do
+      expect(page).to have_content("Marlane")
+
+      fill_in "First Name:", with: "Mary"
+      click_button "Update Descendent"
+
+      expect(page.current_path).to eq(descendents_update_path(@marlane))
+      expect(page).to have_content("Marlane")
+
+    end
   end
 end

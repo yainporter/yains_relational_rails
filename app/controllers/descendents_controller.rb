@@ -12,6 +12,7 @@ class DescendentsController < ApplicationController
     if descendent.save
       redirect_to family_descendents_path(params[:id])
     else
+      require 'pry'; binding.pry
       flash[:notice] = "Descendent not created: Please fill out all fields"
       render :new
     end
@@ -30,6 +31,7 @@ class DescendentsController < ApplicationController
     if @descendent.update(descendent_params)
       redirect_to descendents_show_path(@descendent)
     else
+      @descendent = Descendent.find(params[:id])
       flash[:notice] = "Descendent not updated: Please fill out all fields to update"
       render :edit
     end

@@ -18,13 +18,11 @@ RSpec.describe "Family Descendents New Page", type: :feature do
       expect(page).to have_content("New Descendent")
       expect(page).to have_field("First Name:")
       expect(page).to have_field("Family ID:")
-      expect(page).to have_field("Parents ID:")
       expect(page).to have_field("True")
       expect(page).to have_field("Languages Spoken:")
 
       fill_in "First Name:", with: "Rusty"
       fill_in "Family ID:", with: @porters.id
-      fill_in "Parents ID:", with: @marlane_and_don.id
       choose("False")
       fill_in "Languages Spoken:", with: 3
 
