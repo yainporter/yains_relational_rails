@@ -4,7 +4,7 @@ class DescendentsController < ApplicationController
   end
 
   def new
-
+    
   end
 
   def create

@@ -1,4 +1,5 @@
 <h1>Add New Descendent</h1>
+<p>Family ID: <%= params[:id] %> </p>
 <%= render partial: "form", locals: {
                                       path: family_descendents_create_path,
                                       method: :post,
