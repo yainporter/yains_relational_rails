@@ -1,6 +1,6 @@
 class Family < ApplicationRecord
   has_many :descendents, dependent: :destroy
-  has_many :relationships, through: :descendents
+
 
   validates :name, presence: true
 

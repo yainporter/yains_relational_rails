@@ -1,7 +1,9 @@
 class Descendent < ApplicationRecord
   belongs_to :family
-  has_one :relationship_as_mom, class_name: "Relationship", foreign_key: "mom_id", dependent: :destroy
-  has_one :relationship_as_dad, class_name: "Relationship", foreign_key: "dad_id", dependent: :destroy
+  belongs_to :mom, class_name: "Relationship", foreign_key: :parents_id, optional: true
+  belongs_to :dad, class_name: "Relationship", foreign_key: :parents_id, optional: true
+  has_many :relationships_as_mom, class_name: "Relationship", foreign_key: :mom_id, dependent: :destroy
+  has_many :relationships_as_dad, class_name: "Relationship", foreign_key: :dad_id, dependent: :destroy
 
   validates :first_name, :family_id, :languages_spoken, presence: true
   validates :family_id, :languages_spoken, numericality: true
@@ -9,6 +11,9 @@ class Descendent < ApplicationRecord
 
   def last_name
     family.name
+  end
+
+  def siblings
   end
 
   def self.true_records

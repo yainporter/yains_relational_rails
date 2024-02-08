@@ -4,6 +4,7 @@ RSpec.describe Relationship, type: :model do
   describe "associations" do
     it { should belong_to(:mom)}
     it { should belong_to(:dad)}
+    it { should have_many(:children)}
     # it { should belong_to(:family).through(:relationship_as_dad)}
     # How do I write this association?
 
